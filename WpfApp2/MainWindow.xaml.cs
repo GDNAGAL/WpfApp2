@@ -10,26 +10,8 @@ namespace WpfApp2
         public MainWindow()
         {
             InitializeComponent();
-
-            ObservableCollection<Member> members = new ObservableCollection<Member>();
-
-            members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
-            members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
-            members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
-            members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
-            members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
-            members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
-            members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
-            members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
-            members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
-            members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
-            members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
-            members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
-            members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
-            members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
-            members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
-
-            membersDataGrid.ItemsSource = members;
+            Main.Content = new AddDriver();
+           
         }
 
         private bool IsMaximize = false;
@@ -62,14 +44,5 @@ namespace WpfApp2
             }
         }
 
-    }
-
-    public class Member
-    {
-        public string Number { get; set; }
-        public string Name { get; set; }
-        public string Position { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
     }
 }
