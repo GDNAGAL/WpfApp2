@@ -1,0 +1,77 @@
+﻿<Window x:Class="WpfApp2.AddVehicle"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        xmlns:uc="clr-namespace:WpfApp2.UserControls"
+        mc:Ignorable="d"
+        Title="Add new Vehicle" Height="600" Width="950">
+    
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </Window.Resources>
+
+    <Grid>
+        <Border CornerRadius="7" Background="#ffffff" >
+            <Border.Effect>
+                <DropShadowEffect Direction="-130" BlurRadius="30" ShadowDepth="5" Opacity="0.1"/>
+            </Border.Effect>
+
+            <Grid Margin="20 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Form Title-->
+                <StackPanel Orientation="Horizontal" Margin="20 20 0 0">
+                    <Border CornerRadius="50" BorderThickness="1.5" BorderBrush="#EFEFEF">
+
+                    </Border>
+
+                    <TextBlock Text="Add new driver" Foreground="#374655" FontSize="18" Margin="15 0 0 0" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <!--Form Percentage-->
+                <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" Margin="0 20 20 0"/>
+
+                <Separator Grid.Row="1" Grid.ColumnSpan="2" Height="0.7" Margin="-20 20 -20 20" Background="#E1E6EB"/>
+
+                <!--Inputs-->
+                <uc:MyTextBox Grid.Column="0" Grid.Row="2" Caption="Vehicle Number"/>
+                <uc:MyTextBox Grid.Column="0" Grid.Row="3" Caption="Vehicle Type"/>
+                <uc:MyTextBox Grid.Column="0" Grid.Row="4" Caption="Capacity"/>
+                <uc:MyTextBox Grid.Column="0" Grid.Row="5" Caption="Chassis Number"/>
+                <uc:MyTextBox Grid.Column="1" Grid.Row="2" Caption="Registration Number"/>
+                <uc:MyTextBox Grid.Column="1" Grid.Row="3" Caption="Model"/>
+                <uc:MyTextBox Grid.Column="1" Grid.Row="4" Caption="Capacity(Unit)"/>
+                <uc:MyTextBox Grid.Column="1" Grid.Row="5" Caption="Make Year"/>
+
+                <!--Form Bottom Background-->
+                <Border Grid.Row="6" Grid.ColumnSpan="2" Height="80" Background="#f6f6f6" CornerRadius="0 0 10 10" Margin="-20 40 -20 0"/>
+
+                <!--Main Button-->
+                <Button Grid.Column="1" Grid.Row="6" Content="Save" HorizontalAlignment="Right" Margin="0 40 20 0" Style="{StaticResource mainButton}">
+                    <Button.Effect>
+                        <DropShadowEffect Direction="-120" BlurRadius="10" Opacity="0.3" ShadowDepth="5" Color="#4880FF"/>
+                    </Button.Effect>
+                </Button>
+
+                <!--Secondary Button-->
+                <Button Grid.Row="6" Content="Cancel" HorizontalAlignment="Left" Margin="20 40 0 0" Style="{StaticResource secondaryButton}" Width="150" Click="Cancel_Click"/>
+
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

@@ -49,7 +49,7 @@
             <TextBlock Text="Drivers" Grid.Row="1" Width="auto" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0" Foreground="#121518" HorizontalAlignment="Left"/>
 
             <!--Add Button-->
-            <Button Style="{StaticResource addButton}">
+            <Button Style="{StaticResource addButton}" Click="AddDriver_Click">
                 <StackPanel Orientation="Horizontal">
                     <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
                     <TextBlock Text="Add New Driver"/>

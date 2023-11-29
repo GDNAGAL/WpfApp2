@@ -24,5 +24,11 @@ namespace WpfApp2
         {
             InitializeComponent();
         }
+
+        private void addvehicle_Click(object sender, RoutedEventArgs e)
+        {
+            AddVehicle add_vehicle = new AddVehicle();
+            add_vehicle.ShowDialog();
+        }
     }
 }

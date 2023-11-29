@@ -44,6 +44,12 @@ namespace WpfApp2
             membersDataGrid.ItemsSource = members;
 
         }
+
+        private void AddDriver_Click(object sender, RoutedEventArgs e)
+        {
+            AddDriver add_driver = new AddDriver();
+            add_driver.ShowDialog();
+        }
     }
 
     public class Member
