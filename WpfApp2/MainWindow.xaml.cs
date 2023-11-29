@@ -14,10 +14,20 @@ namespace WpfApp2
             ObservableCollection<Member> members = new ObservableCollection<Member>();
 
             members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
-            //members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
-            //members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
-            //members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
-            //members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
+            members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
+            members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
+            members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
+            members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
+            members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
+            members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
+            members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
+            members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
+            members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
+            members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
+            members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
+            members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
+            members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
+            members.Add(new Member { Number = "1", Name = "John Doe", Position = "Coach", Email = "john.doe@gmail.com", Phone = "415-954-1475" });
 
             membersDataGrid.ItemsSource = members;
         }
