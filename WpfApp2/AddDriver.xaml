@@ -22,11 +22,7 @@
                 <ColumnDefinition Width="400"/>
             </Grid.ColumnDefinitions>
 
-            <!--App Title-->
-            <TextBlock Text="Design App" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="55 0 0 2" FontSize="16" FontWeight="SemiBold" Foreground="#4880FF"/>
-            <Icon:PackIconMaterial Kind="Message" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="33 0 0 4" Width="14" Height="14" Foreground="#FF9D00"/>
-            <Icon:PackIconMaterial Kind="Message" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30 4 0 0" Width="14" Height="14" Foreground="#4880FF"/>
-
+          
             <!--Right Section-->
             
 
@@ -62,11 +58,7 @@
                             <!--Form Title-->
                             <StackPanel Orientation="Horizontal" Margin="20 20 0 0">
                                 <Border CornerRadius="50" BorderThickness="1.5" BorderBrush="#EFEFEF">
-                                    <Ellipse Width="40" Height="40">
-                                        <Ellipse.Fill>
-                                            <ImageBrush ImageSource="/Images/q1.png"/>
-                                        </Ellipse.Fill>
-                                    </Ellipse>
+                                    
                                 </Border>
 
                                 <TextBlock Text="Business Details" Foreground="#374655" FontSize="18" Margin="15 0 0 0" VerticalAlignment="Center"/>
@@ -92,14 +84,14 @@
                             <Separator Grid.Row="1" Grid.ColumnSpan="2" Height="0.7" Margin="-20 20 -20 20" Background="#E1E6EB"/>
 
                             <!--Inputs-->
-                            <uc:MyTextBox Grid.Column="0" Grid.Row="2" Caption="Legal Name of Business" Hint="Enter your legal name"/>
-                            <uc:MyTextBox Grid.Column="0" Grid.Row="3" Caption="Notification Email" Hint="Enter your email"/>
-                            <uc:MyTextBox Grid.Column="0" Grid.Row="4" Caption="Phone" Hint="Enter your phone"/>
-                            <uc:MyTextBox Grid.Column="0" Grid.Row="5" Caption="Address (Line 1)" Hint="Enter your address"/>
-                            <uc:MyTextBox Grid.Column="1" Grid.Row="2" Caption="Business Name" Hint="Enter your business name"/>
-                            <uc:MyTextBox Grid.Column="1" Grid.Row="3" Caption="Account Email" Hint="Enter your email"/>
-                            <uc:MyTextBox Grid.Column="1" Grid.Row="4" Caption="Currency" Hint="Enter your currnecy"/>
-                            <uc:MyTextBox Grid.Column="1" Grid.Row="5" Caption="Address (Line 2)" Hint="Enter your address"/>
+                            <uc:MyTextBox Grid.Column="0" Grid.Row="2" Caption="Driver Name" Hint="Enter your legal name" Loaded="MyTextBox_Loaded"/>
+                            <uc:MyTextBox Grid.Column="0" Grid.Row="3" Caption="Licence Number" Hint="Enter your email"/>
+                            <uc:MyTextBox Grid.Column="0" Grid.Row="4" Caption="Date of Birth" Hint="Enter your phone"/>
+                            <uc:MyTextBox Grid.Column="0" Grid.Row="5" Caption="Address" Hint="Enter your address"/>
+                            <uc:MyTextBox Grid.Column="1" Grid.Row="2" Caption="Contact Number" Hint="Enter your business name"/>
+                            <uc:MyTextBox Grid.Column="1" Grid.Row="3" Caption="Licence Type" Hint="Enter your email" Loaded="MyTextBox_Loaded_1"/>
+                            <uc:MyTextBox Grid.Column="1" Grid.Row="4" Caption="Licence Expiry Date" Hint="Enter your currnecy"/>
+                            <uc:MyTextBox Grid.Column="1" Grid.Row="5" Caption="Alternate Contact Number" Hint="Enter your address"/>
 
                             <!--Form Bottom Background-->
                             <Border Grid.Row="6" Grid.ColumnSpan="2" Height="80" Background="#f6f6f6" CornerRadius="0 0 10 10" Margin="-20 40 -20 0"/>

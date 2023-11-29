@@ -61,6 +61,7 @@ namespace WpfApp2
                 this.DragMove();
             }
         }
+
     }
 
     public class Member
