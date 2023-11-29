@@ -29,7 +29,7 @@
                 <Border Grid.Row="1" Background="#623ED0" CornerRadius="0 0 0 0" Margin="0,0,0,0">
                     <DockPanel>
                         <!--Menu Logo-->
-                        <Border Width="80" Height="80" Padding="3" Background="White" CornerRadius="100" DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="0 10 0 0">
+                        <Border Width="80" Height="80" Padding="3" Background="White" CornerRadius="100" DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="0 50 0 0">
 
                         </Border>
 

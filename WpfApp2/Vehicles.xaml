@@ -56,7 +56,7 @@
             </Button>
 
             <!--Seprator-->
-            <Separator Height="1" Grid.Row="3" Background="#DAE2EA" Margin="0 -1 0 10"/>
+            <Separator Height="1" Grid.Row="3" Background="#DAE2EA" Margin="0 10 0 10"/>
 
             <!--Tab buttons-->
             <!--<StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 10 0 0">
