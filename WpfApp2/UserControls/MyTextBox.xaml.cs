@@ -16,6 +16,7 @@ namespace WpfApp2.UserControls
             set { SetValue(HintProperty, value); }
         }
 
+
         public static readonly DependencyProperty HintProperty = DependencyProperty.Register("Hint", typeof(string), typeof(MyTextBox));
 
 
@@ -25,7 +26,10 @@ namespace WpfApp2.UserControls
             set { SetValue(CaptionProperty, value); }
         }
 
+ 
+
         public static readonly DependencyProperty CaptionProperty = DependencyProperty.Register("Caption", typeof(string), typeof(MyTextBox));
 
+       
     }
 }

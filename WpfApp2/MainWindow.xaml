@@ -91,9 +91,9 @@
 
             </Grid>
 
-            <!--Main Section-->
-            <Grid>
-                <Frame Name="Main" NavigationUIVisibility="Hidden"/>
+            <!--Main Section--> 
+            <Grid Grid.Column="1" Margin="50,0,0,0">
+                <Frame Name="Main" HorizontalAlignment="Stretch" NavigationUIVisibility="Hidden"/>
             </Grid>
         </Grid>
     </Border>

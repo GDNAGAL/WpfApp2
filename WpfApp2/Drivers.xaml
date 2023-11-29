@@ -6,15 +6,16 @@
       xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
       Background="Transparent"
       xmlns:local="clr-namespace:WpfApp2"
-      Height="720" Width="1080" 
+      Height="720" Width="1080"
+      HorizontalAlignment="Left"
       Title="Drivers">
 
     <Page.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
     </Page.Resources>
-
+    <Grid>
     <Border CornerRadius="0" Background="#EFF2F7">
-        <Grid Grid.Column="1" Margin="30 20 20 20">
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
@@ -83,7 +84,7 @@
 
 
             <!--Members Data Grid-->
-            <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyle1}" Margin="10,10,-10,60" Grid.Row="5" Grid.RowSpan="2">
+            <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyle1}" Margin="10,10,0,60" Grid.Row="5" Grid.RowSpan="2">
                 <DataGrid.Columns>
                     <DataGridCheckBoxColumn Header="C" CanUserResize="False" Width="auto" ElementStyle="{StaticResource CheckBoxStyle1}">
                         <DataGridCheckBoxColumn.HeaderTemplate>
@@ -153,4 +154,5 @@
 
         </Grid>
     </Border>
+    </Grid>
 </Page>

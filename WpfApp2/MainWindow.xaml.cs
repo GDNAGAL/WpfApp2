@@ -10,7 +10,7 @@ namespace WpfApp2
         public MainWindow()
         {
             InitializeComponent();
-            Main.Content = new AddDriver();
+            Main.Content = new Drivers();
            
         }
 
