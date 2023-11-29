@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -9,9 +10,7 @@ namespace WpfApp2
     {
         public MainWindow()
         {
-            InitializeComponent();
-           
-           
+            InitializeComponent(); 
         }
 
         private bool IsMaximize = false;
@@ -47,6 +46,7 @@ namespace WpfApp2
         private void Drivers_Click(object sender, RoutedEventArgs e)
         {
             Main.Content = new Drivers();
+           
         }
 
         private void Vehicles_Click(object sender, RoutedEventArgs e)
