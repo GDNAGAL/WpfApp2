@@ -212,6 +212,7 @@
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="#7B5CD6" />
                     <Setter Property="Foreground" Value="#ffffff" />
+                    <Setter Property="Cursor" Value="Hand" />
                 </Trigger>
             </Style.Triggers>
         </Style>
