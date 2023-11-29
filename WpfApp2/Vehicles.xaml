@@ -5,8 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
       Background="Transparent"
-      xmlns:local="clr-namespace:WpfApp2"
-      Height="720" Width="1080" 
+      xmlns:local="clr-namespace:WpfApp2" 
       Title="Drivers">
     
     <Page.Resources>
@@ -14,7 +13,7 @@
     </Page.Resources>
     
     <Border CornerRadius="0" Background="#EFF2F7">
-        <Grid Grid.Column="1" Margin="30 20 20 20">
+        <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>

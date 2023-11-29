@@ -10,7 +10,7 @@ namespace WpfApp2
         public MainWindow()
         {
             InitializeComponent();
-            Main.Content = new Drivers();
+           
            
         }
 
@@ -44,5 +44,14 @@ namespace WpfApp2
             }
         }
 
+        private void Drivers_Click(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new Drivers();
+        }
+
+        private void Vehicles_Click(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new Vehicles();
+        }
     }
 }

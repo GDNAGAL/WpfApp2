@@ -49,14 +49,14 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButton}">
+                            <Button Style="{StaticResource menuButton}" Click="Drivers_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="CalendarClock" Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Drivers"/>
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButton}">
+                            <Button Style="{StaticResource menuButton}" Click="Vehicles_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="HomeVariant" Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Vehicles"/>
@@ -92,7 +92,7 @@
             </Grid>
 
             <!--Main Section--> 
-            <Grid Grid.Column="1" Margin="50,0,0,0">
+            <Grid Grid.Column="1" Margin="50,20,50,20">
                 <Frame Name="Main" HorizontalAlignment="Stretch" NavigationUIVisibility="Hidden"/>
             </Grid>
         </Grid>
