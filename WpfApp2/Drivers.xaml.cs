@@ -85,7 +85,7 @@ namespace WpfApp2
                         }
                         item.BgColor = (Brush)converter.ConvertFromInvariantString(color[i]);
                         item.Number = (j).ToString();
-                        item.Character = item.FullName[0].ToString();
+                        item.Character = item.FullName[0].ToString().ToUpper();
                         i++;
                         j++;
                     }

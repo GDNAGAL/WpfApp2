@@ -17,6 +17,11 @@ namespace WpfApp2.UserControls
             
             InitializeComponent();
         }
+        public string TextValue
+        {
+            get { return datePicker.Text; }
+            set { datePicker.Text = value; }
+        }
 
         public DatePickerInputType InputType { get; set; }
 
