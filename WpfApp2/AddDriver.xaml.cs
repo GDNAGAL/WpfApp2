@@ -14,9 +14,7 @@ using System.Windows.Shapes;
 
 namespace WpfApp2
 {
-    /// <summary>
-    /// Interaction logic for AddDriver.xaml
-    /// </summary>
+
     public partial class AddDriver : Window
     {
         public AddDriver()

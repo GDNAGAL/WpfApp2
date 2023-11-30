@@ -1,13 +1,34 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace WpfApp2.UserControls
 {
+    public enum InputType
+    {
+        Text,
+        Numeric
+    }
     public partial class MyTextBox : UserControl
     {
         public MyTextBox()
         {
             InitializeComponent();
+            InputType = InputType.Text;
+        }
+        public InputType InputType { get; set; }
+
+        private void InputHandler(object sender, TextCompositionEventArgs e)
+        {
+            if (InputType == InputType.Numeric)
+            {
+                // Allow only numeric input
+                if (!char.IsDigit(e.Text, e.Text.Length - 1))
+                {
+                    e.Handled = true;
+                }
+            }
+            // Add additional conditions for other input types if needed
         }
 
         public string TextValue
