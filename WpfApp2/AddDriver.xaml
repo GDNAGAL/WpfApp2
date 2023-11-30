@@ -50,15 +50,15 @@
                 <Separator Grid.Row="1" Grid.ColumnSpan="2" Height="0.7" Margin="-20 20 -20 20" Background="#E1E6EB"/>
 
                 <!--Inputs-->
-                <uc:MyTextBox Grid.Column="0" Grid.Row="2" Caption="Driver's Name" InputType="Numeric" x:Name="DriverNameTextBox"/>
-                <uc:MyTextBox Grid.Column="0" Grid.Row="3" Caption="Licence Number"/>
-                <uc:MyTextBox Grid.Column="0" Grid.Row="4" Caption="Licence expiry date"/>
-                <uc:MyTextBox Grid.Column="0" Grid.Row="5" Caption="Address"/>
-                <uc:MyTextBox Grid.Column="1" Grid.Row="2" Caption="Contact Number" />
-                <uc:MyTextBox Grid.Column="1" Grid.Row="3" Caption="Licence Type"/>
-                <uc:MyDatePicker Grid.Column="1" Grid.Row="4" DCaption="DOBsfsd" InputType="Numeric"/>
+                <uc:MyTextBox Grid.Column="0" Grid.Row="2" Caption="Driver's Name"  x:Name="DriverNameTextBox"/>
+                <uc:MyTextBox Grid.Column="0" Grid.Row="3" Caption="Licence Number" InputType="Numeric" x:Name="LicenceNumberTextBox"/>
+                <uc:MyTextBox Grid.Column="0" Grid.Row="4" Caption="Licence expiry date" x:Name="LicenceExpiryDateTextBox"/>
+                <uc:MyTextBox Grid.Column="0" Grid.Row="5" Caption="Address" x:Name="AddressTextBox"/>
+                <uc:MyTextBox Grid.Column="1" Grid.Row="2" Caption="Contact Number" InputType="Numeric" x:Name="ContectNumberTextBox"/>
+                <uc:MyTextBox Grid.Column="1" Grid.Row="3" Caption="Licence Type" x:Name="LicenceTypeTextBox"/>
+                <uc:MyDatePicker Grid.Column="1" Grid.Row="4" DCaption="DOBsfsd" x:Name="DOBTextBox"/>
                 <!--<uc:MyTextBox Grid.Column="1" Grid.Row="4" Caption="DOB"/>-->
-                <uc:MyTextBox Grid.Column="1" Grid.Row="5" Caption="Alt Contact Number"/>
+                <uc:MyTextBox Grid.Column="1" Grid.Row="5" Caption="Alt Contact Number" InputType="Numeric" x:Name="AltContectNumberTextBox"/>
 
                 <!--Form Bottom Background-->
                 <Border Grid.Row="6" Grid.ColumnSpan="2" Height="80" Background="#f6f6f6" CornerRadius="0 0 10 10" Margin="-20 40 -20 0"/>
