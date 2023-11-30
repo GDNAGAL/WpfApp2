@@ -51,7 +51,20 @@ namespace WpfApp2
             AddDriver add_driver = new AddDriver();
             add_driver.ShowDialog();
         }
-        public async void Page_Loaded(object sender, RoutedEventArgs e)
+        private async void Data_Delete(object sender, RoutedEventArgs e)
+        {
+            string DriverId = (membersDataGrid.SelectedItem as DriverDetails).DriverID;
+            var client = new HttpClient();
+            var request = new HttpRequestMessage(HttpMethod.Post, $"https://localhost:7082/api/DriverDetails/DeleteDriver?DriverId={DriverId}");
+            request.Headers.Add("accept", "text/plain");
+            var response = await client.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+
+            MessageBox.Show("Driver Deleted Successfully", "Data Deleted", MessageBoxButton.OK, MessageBoxImage.Hand);
+
+       
+        }
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             var converter = new BrushConverter();
             string[] color = { "#1098AD", "#1E88E5", "#FF8F00", "#FF5252", "#0CA678", "#6741D9", "#FF6D00", "#FF5252", "#1E88E5", "#0CA678" };
