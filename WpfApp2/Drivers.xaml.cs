@@ -103,10 +103,52 @@ namespace WpfApp2
                 }
             }
         }
+
+        private async void textBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //MessageBox.Show(textBoxSearch.Text);
+            if(textBoxSearch.Text.Trim().Length == 0) {
+                //MessageBox.Show("0");
+                GetDriverData();
+            }
+            var converter = new BrushConverter();
+            string[] color = { "#1098AD", "#1E88E5", "#FF8F00", "#FF5252", "#0CA678", "#6741D9", "#FF6D00", "#FF5252", "#1E88E5", "#0CA678" };
+            using (HttpClient client = new HttpClient())
+            {
+                var request = new HttpRequestMessage(HttpMethod.Post, $"https://localhost:7082/api/DriverDetails/SearchDriver?search={textBoxSearch.Text}");
+                request.Headers.Add("accept", "text/plain");
+                var respons = await client.SendAsync(request);
+                respons.EnsureSuccessStatusCode();
+                if (respons.IsSuccessStatusCode)
+                {
+                    var jsonString = await respons.Content.ReadAsStringAsync();
+                    members = JsonConvert.DeserializeObject<ObservableCollection<DriverDetails>>(jsonString);
+                    int i = 0, j = 1;
+                    foreach (var item in members)
+                    {
+                        if (i == color.Length)
+                        {
+                            i = 0;
+                        }
+                        item.BgColor = (Brush)converter.ConvertFromInvariantString(color[i]);
+                        item.Number = (j).ToString();
+                        item.Character = item.FullName[0].ToString().ToUpper();
+                        i++;
+                        j++;
+                    }
+                    membersDataGrid.ItemsSource = members;
+
+                }
+                else
+                {
+                    MessageBox.Show($"Server Error Code{respons.StatusCode}");
+                }
+            }
+        }
     }
 
-    
-  
+
+
     public class DriverDetails
     {
 
