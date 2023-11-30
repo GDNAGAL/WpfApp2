@@ -27,7 +27,7 @@
 
                 <!--Menu Icon-->
 
-                <Border Grid.Row="1" Background="#623ED0" CornerRadius="10 10 10 10">
+                <Border Grid.Row="1" Background="#623ED0" CornerRadius="0 20 20 0">
                     <DockPanel>
                         <!--Menu Logo-->
                         <Border Width="80" Height="80" Padding="3" Background="White" CornerRadius="100" DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="0 50 0 0">
