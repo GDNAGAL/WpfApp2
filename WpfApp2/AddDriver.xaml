@@ -6,7 +6,8 @@
         xmlns:uc="clr-namespace:WpfApp2.UserControls"
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
-        Title="Add New Driver" Height="600" Width="950">
+        Title="Add New Driver" Height="600" Width="950"
+        WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
@@ -49,7 +50,7 @@
                 <Separator Grid.Row="1" Grid.ColumnSpan="2" Height="0.7" Margin="-20 20 -20 20" Background="#E1E6EB"/>
 
                 <!--Inputs-->
-                <uc:MyTextBox Grid.Column="0" Grid.Row="2" Caption="Driver's Name"/>
+                <uc:MyTextBox Grid.Column="0" Grid.Row="2" Caption="Driver's Name" x:Name="DriverNameTextBox"/>
                 <uc:MyTextBox Grid.Column="0" Grid.Row="3" Caption="Licence Number"/>
                 <uc:MyTextBox Grid.Column="0" Grid.Row="4" Caption="Licence expiry date"/>
                 <uc:MyTextBox Grid.Column="0" Grid.Row="5" Caption="Address"/>
@@ -62,7 +63,7 @@
                 <Border Grid.Row="6" Grid.ColumnSpan="2" Height="80" Background="#f6f6f6" CornerRadius="0 0 10 10" Margin="-20 40 -20 0"/>
 
                 <!--Main Button-->
-                <Button Grid.Column="1" Grid.Row="6" Content="Save" HorizontalAlignment="Right" Margin="0 40 20 0" Style="{StaticResource mainButton}">
+                <Button Grid.Column="1" Grid.Row="6" Content="Save" HorizontalAlignment="Right" Margin="0 40 20 0" Style="{StaticResource addButton}" Click="AddDriver_Button_Click">
                     <Button.Effect>
                         <DropShadowEffect Direction="-120" BlurRadius="10" Opacity="0.3" ShadowDepth="5" Color="#4880FF"/>
                     </Button.Effect>

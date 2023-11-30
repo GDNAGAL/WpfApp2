@@ -44,5 +44,13 @@ namespace WpfApp2
         {
             this.Close();
         }
+
+        private void AddDriver_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if(DriverNameTextBox.TextValue == "")
+            {
+                 MessageBox.Show("Name Is Required");
+            }
+        }
     }
 }

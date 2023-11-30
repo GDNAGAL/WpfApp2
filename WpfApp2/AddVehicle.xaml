@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:WpfApp2"
         xmlns:uc="clr-namespace:WpfApp2.UserControls"
         mc:Ignorable="d"
-        Title="Add new Vehicle" Height="600" Width="950">
+        Title="Add new Vehicle" Height="600" Width="950"
+        WindowStartupLocation="CenterScreen">
     
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />

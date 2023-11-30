@@ -10,6 +10,12 @@ namespace WpfApp2.UserControls
             InitializeComponent();
         }
 
+        public string TextValue
+        {
+            get { return textBox.Text; }
+            set { textBox.Text = value; }
+        }
+
         public string Hint
         {
             get { return (string)GetValue(HintProperty); }
