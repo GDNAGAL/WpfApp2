@@ -1,0 +1,81 @@
+﻿<Window x:Class="WpfApp2.AddWorkOrder"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:uc="clr-namespace:WpfApp2.UserControls"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+        Title="WorkOrder" Height="600" Width="950">
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </Window.Resources>
+    <Grid>
+        <Border CornerRadius="7" Background="#ffffff" >
+            <Border.Effect>
+                <DropShadowEffect Direction="-130" BlurRadius="30" ShadowDepth="5" Opacity="0.1"/>
+            </Border.Effect>
+
+            <Grid Margin="20 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Form Title-->
+                <StackPanel Orientation="Horizontal" Margin="20 20 0 0">
+                    <Border CornerRadius="50" BorderThickness="1.5" BorderBrush="#EFEFEF">
+
+                    </Border>
+
+                    <TextBlock Text="Add new driver" Foreground="#374655" FontSize="18" Margin="15 0 0 0" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <!--Form Percentage-->
+                <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" Margin="0 20 20 0"/>
+
+                <Separator Grid.Row="1" Grid.ColumnSpan="2" Height="0.7" Margin="-20 20 -20 20" Background="#E1E6EB"/>
+
+                <!--Inputs-->
+                <uc:MyTextBox Grid.Column="0" Grid.Row="2" Caption="Driver's Name"  x:Name="DriverNameTextBox"/>
+                <uc:MyTextBox Grid.Column="0" Grid.Row="3" Caption="Licence Number" InputType="Numeric" x:Name="LicenceNumberTextBox"/>
+                <!--<uc:MyTextBox Grid.Column="0" Grid.Row="4" Caption="Licence expiry date" x:Name="LicenceExpiryDateTextBox"/>-->
+                <uc:MyDatePicker Grid.Column="0" Grid.Row="4" DCaption="DOBsfsd" x:Name="LicenceExpiryDateTextBox"/>
+                <uc:MyTextBox Grid.Column="0" Grid.Row="5" Caption="Address" x:Name="AddressTextBox"/>
+                <uc:MyTextBox Grid.Column="1" Grid.Row="2" Caption="Contact Number" InputType="Numeric" x:Name="ContectNumberTextBox"/>
+                <uc:MyTextBox Grid.Column="1" Grid.Row="3" Caption="Licence Type" x:Name="LicenceTypeTextBox"/>
+                <uc:MyDatePicker Grid.Column="1" Grid.Row="4" DCaption="DOBsfsd" x:Name="DOBTextBox"/>
+                <!--<uc:MyTextBox Grid.Column="1" Grid.Row="4" Caption="DOB"/>-->
+                <uc:MyTextBox Grid.Column="1" Grid.Row="5" Caption="Alt Contact Number" InputType="Numeric" x:Name="AltContectNumberTextBox"/>
+
+                <!--Form Bottom Background-->
+                <Border Grid.Row="6" Grid.ColumnSpan="2" Height="80" Background="#f6f6f6" CornerRadius="0 0 10 10" Margin="-20 40 -20 0"/>
+
+                <!--Main Button-->
+                <Button Grid.Column="1" Grid.Row="6" Content="Save" HorizontalAlignment="Right" Margin="0 40 20 0" Style="{StaticResource addButton}">
+                    <Button.Effect>
+                        <DropShadowEffect Direction="-120" BlurRadius="10" Opacity="0.3" ShadowDepth="5" Color="#4880FF"/>
+                    </Button.Effect>
+                </Button>
+
+                <!--Secondary Button-->
+                <Button Grid.Row="6" Content="Cancel" HorizontalAlignment="Left" Margin="20 40 0 0" Style="{StaticResource secondaryButton}" Width="150" Click="Button_Click"/>
+                <Label Grid.Column="1" Content="Date of Birth" HorizontalAlignment="Left" Margin="16,8,0,0" Grid.Row="4" VerticalAlignment="Top" Foreground="#97A5B4"/>
+                <Label Content="Licence Expiry Date" HorizontalAlignment="Left" Margin="15,6,0,0" Grid.Row="4" VerticalAlignment="Top" Foreground="#97A5B4"/>
+
+            </Grid>
+        </Border>
+
+    </Grid>
+</Window>

@@ -53,5 +53,10 @@ namespace WpfApp2
         {
             Main.Content = new Vehicles();
         }
+
+        private void WorkOrder_Click(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new WorkOrders();
+        }
     }
 }
