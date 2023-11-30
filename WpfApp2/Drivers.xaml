@@ -7,7 +7,8 @@
       Background="Transparent"
       xmlns:local="clr-namespace:WpfApp2"
       HorizontalAlignment="Left"
-      Title="Drivers">
+      Title="Drivers"
+      Loaded="Page_Loaded">
 
     <Page.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />

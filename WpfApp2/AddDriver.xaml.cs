@@ -21,6 +21,8 @@ namespace WpfApp2
     {
         private readonly TimeZoneInfo INDIAN_ZONE = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
 
+        public object MessageBoxIcon { get; private set; }
+
         public AddDriver()
         {
             InitializeComponent();
@@ -59,7 +61,7 @@ namespace WpfApp2
             details.LicenseNo = LicenceNumberTextBox.TextValue;
             details.Address = AddressTextBox.TextValue;
             details.LicenseType = Convert.ToInt32(LicenceTypeTextBox.TextValue);
-            details.DOB = TimeZoneInfo.ConvertTimeFromUtc(Convert.ToDateTime(DOBTextBox.datePicker), INDIAN_ZONE);
+            details.DOB = TimeZoneInfo.ConvertTimeFromUtc(Convert.ToDateTime(DOBTextBox.TextValue), INDIAN_ZONE);
             details.AltContactNo = AltContectNumberTextBox.TextValue;
             details.ContactNo = ContectNumberTextBox.TextValue;
 
@@ -80,11 +82,9 @@ namespace WpfApp2
             var content = new StringContent(dataAsString, null, "application/json");
             request.Content = content;
             var response = await client.SendAsync(request);
-            response.EnsureSuccessStatusCode();
-            Console.WriteLine(await response.Content.ReadAsStringAsync());
-            MainWindow main = new();
-            main.Main.Content = new Drivers();
-
+            Console.WriteLine(response.Content);
+            this.Hide();
+            MessageBox.Show("Driver Added Successfully !!!", "Success ", MessageBoxButton.OK, MessageBoxImage.Information);
 
         }
 

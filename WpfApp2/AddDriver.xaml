@@ -12,7 +12,7 @@
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
     </Window.Resources>
-    
+
     <Grid>
         <Border CornerRadius="7" Background="#ffffff" >
             <Border.Effect>
@@ -38,7 +38,7 @@
                 <!--Form Title-->
                 <StackPanel Orientation="Horizontal" Margin="20 20 0 0">
                     <Border CornerRadius="50" BorderThickness="1.5" BorderBrush="#EFEFEF">
-                       
+
                     </Border>
 
                     <TextBlock Text="Add new driver" Foreground="#374655" FontSize="18" Margin="15 0 0 0" VerticalAlignment="Center"/>
@@ -52,7 +52,8 @@
                 <!--Inputs-->
                 <uc:MyTextBox Grid.Column="0" Grid.Row="2" Caption="Driver's Name"  x:Name="DriverNameTextBox"/>
                 <uc:MyTextBox Grid.Column="0" Grid.Row="3" Caption="Licence Number" InputType="Numeric" x:Name="LicenceNumberTextBox"/>
-                <uc:MyTextBox Grid.Column="0" Grid.Row="4" Caption="Licence expiry date" x:Name="LicenceExpiryDateTextBox"/>
+                <!--<uc:MyTextBox Grid.Column="0" Grid.Row="4" Caption="Licence expiry date" x:Name="LicenceExpiryDateTextBox"/>-->
+                <uc:MyDatePicker Grid.Column="0" Grid.Row="4" DCaption="DOBsfsd" x:Name="LicenceExpiryDateTextBox"/>
                 <uc:MyTextBox Grid.Column="0" Grid.Row="5" Caption="Address" x:Name="AddressTextBox"/>
                 <uc:MyTextBox Grid.Column="1" Grid.Row="2" Caption="Contact Number" InputType="Numeric" x:Name="ContectNumberTextBox"/>
                 <uc:MyTextBox Grid.Column="1" Grid.Row="3" Caption="Licence Type" x:Name="LicenceTypeTextBox"/>
@@ -72,7 +73,8 @@
 
                 <!--Secondary Button-->
                 <Button Grid.Row="6" Content="Cancel" HorizontalAlignment="Left" Margin="20 40 0 0" Style="{StaticResource secondaryButton}" Width="150" Click="Cancel_Click"/>
-                <Label Grid.Column="1" Content="Date of Birth" HorizontalAlignment="Left" Margin="16,10,0,0" Grid.Row="4" VerticalAlignment="Top" Foreground="#97A5B4"/>
+                <Label Grid.Column="1" Content="Date of Birth" HorizontalAlignment="Left" Margin="16,8,0,0" Grid.Row="4" VerticalAlignment="Top" Foreground="#97A5B4"/>
+                <Label Content="Licence Expiry Date" HorizontalAlignment="Left" Margin="15,6,0,0" Grid.Row="4" VerticalAlignment="Top" Foreground="#97A5B4"/>
 
             </Grid>
         </Border>
