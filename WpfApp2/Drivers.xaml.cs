@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using System.Net.Http;
 using Newtonsoft.Json;
+using System.Timers;
 
 namespace WpfApp2
 {
@@ -24,7 +25,8 @@ namespace WpfApp2
     public partial class Drivers : Page
     {
         ObservableCollection<DriverDetails> members = new ObservableCollection<DriverDetails>();
-        //ObservableCollection<Member> members = new ObservableCollection<Member>();
+       
+        private Timer searchTimer;
         public Drivers()
         {
             InitializeComponent();
@@ -43,6 +45,10 @@ namespace WpfApp2
             //members.Add(new Member { Number = "10", Character = "S", BgColor = (Brush)converter.ConvertFromString("#0CA678"), Name = "Saeed Dasman", Position = "Coach", Email = "saeed.dasi@hotmail.com", Phone = "817-320-5052" });
 
             //membersDataGrid.ItemsSource = members;
+
+            searchTimer = new Timer(500);
+            searchTimer.AutoReset = false;
+            searchTimer.Elapsed += OnSearchTimerElapsed;
 
         }
 
@@ -106,45 +112,68 @@ namespace WpfApp2
 
         private async void textBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //MessageBox.Show(textBoxSearch.Text);
-            if(textBoxSearch.Text.Trim().Length == 0) {
-                //MessageBox.Show("0");
-                GetDriverData();
-            }
-            var converter = new BrushConverter();
-            string[] color = { "#1098AD", "#1E88E5", "#FF8F00", "#FF5252", "#0CA678", "#6741D9", "#FF6D00", "#FF5252", "#1E88E5", "#0CA678" };
-            using (HttpClient client = new HttpClient())
-            {
-                var request = new HttpRequestMessage(HttpMethod.Post, $"https://localhost:7082/api/DriverDetails/SearchDriver?search={textBoxSearch.Text}");
-                request.Headers.Add("accept", "text/plain");
-                var respons = await client.SendAsync(request);
-                respons.EnsureSuccessStatusCode();
-                if (respons.IsSuccessStatusCode)
-                {
-                    var jsonString = await respons.Content.ReadAsStringAsync();
-                    members = JsonConvert.DeserializeObject<ObservableCollection<DriverDetails>>(jsonString);
-                    int i = 0, j = 1;
-                    foreach (var item in members)
-                    {
-                        if (i == color.Length)
-                        {
-                            i = 0;
-                        }
-                        item.BgColor = (Brush)converter.ConvertFromInvariantString(color[i]);
-                        item.Number = (j).ToString();
-                        item.Character = item.FullName[0].ToString().ToUpper();
-                        i++;
-                        j++;
-                    }
-                    membersDataGrid.ItemsSource = members;
+            searchTimer.Stop();
+            searchTimer.Start();
+        }
 
+        private async void OnSearchTimerElapsed(object sender, ElapsedEventArgs e)
+        {
+            // This method will be called after the specified delay (e.g., 500 milliseconds) of user inactivity
+            await Dispatcher.InvokeAsync(() =>
+            {
+                // Your existing code for calling the API goes here
+                if (textBoxSearch.Text.Trim().Length == 0)
+                {
+                    GetDriverData();
                 }
                 else
                 {
-                    MessageBox.Show($"Server Error Code{respons.StatusCode}");
+                    serchDriver(textBoxSearch.Text);
                 }
-            }
+
+                
+
+            });
         }
+
+        private async void serchDriver(string searchText)
+        {
+            var converter = new BrushConverter();
+                string[] color = { "#1098AD", "#1E88E5", "#FF8F00", "#FF5252", "#0CA678", "#6741D9", "#FF6D00", "#FF5252", "#1E88E5", "#0CA678" };
+                using (HttpClient client = new HttpClient())
+                {
+                    var request = new HttpRequestMessage(HttpMethod.Post, $"https://localhost:7082/api/DriverDetails/SearchDriver?search={searchText}");
+                    request.Headers.Add("accept", "text/plain");
+                    var respons = await client.SendAsync(request);
+                    respons.EnsureSuccessStatusCode();
+                    if (respons.IsSuccessStatusCode)
+                    {
+                        var jsonString = await respons.Content.ReadAsStringAsync();
+                        members = JsonConvert.DeserializeObject<ObservableCollection<DriverDetails>>(jsonString);
+                        int i = 0, j = 1;
+                        foreach (var item in members)
+                        {
+                            if (i == color.Length)
+                            {
+                                i = 0;
+                            }
+                            item.BgColor = (Brush)converter.ConvertFromInvariantString(color[i]);
+                            item.Number = (j).ToString();
+                            item.Character = item.FullName[0].ToString().ToUpper();
+                            i++;
+                            j++;
+                        }
+                        membersDataGrid.ItemsSource = members;
+
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Server Error Code{respons.StatusCode}");
+                    }
+                }
+        }
+
+
     }
 
 
@@ -160,7 +189,7 @@ namespace WpfApp2
 
         public string? FullName { get; set; }
 
-        public DateTime DOB { get; set; }
+        public string DOB { get; set; }
 
         public int LicenseType { get; set; }
 

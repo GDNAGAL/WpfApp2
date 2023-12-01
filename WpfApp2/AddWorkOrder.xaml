@@ -6,7 +6,8 @@
         xmlns:uc="clr-namespace:WpfApp2.UserControls"
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
-        Title="WorkOrder" Height="600" Width="950">
+        Title="AddWorkOrder" Height="600" Width="950"
+        WindowState="Maximized">
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
@@ -21,58 +22,60 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="83*"/>
+                    <RowDefinition Height="52*"/>
+                    <RowDefinition Height="31*"/>
+                    <RowDefinition Height="83*"/>
+                    <RowDefinition Height="83*"/>
+                    <RowDefinition Height="83*"/>
+                    <RowDefinition Height="83*"/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
                 <!--Form Title-->
-                <StackPanel Orientation="Horizontal" Margin="20 20 0 0">
+                <StackPanel Orientation="Horizontal" Margin="4,0,9,1" Grid.Row="1">
                     <Border CornerRadius="50" BorderThickness="1.5" BorderBrush="#EFEFEF">
 
                     </Border>
 
-                    <TextBlock Text="Add new driver" Foreground="#374655" FontSize="18" Margin="15 0 0 0" VerticalAlignment="Center"/>
+                    <TextBlock Text="Package Details" Foreground="#374655" FontSize="18" Margin="15 0 0 0" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="4,0,9,10" Grid.Row="4">
+                    <Border CornerRadius="50" BorderThickness="1.5" BorderBrush="#EFEFEF">
+
+                    </Border>
+
+                    <TextBlock Text="Route Details" Foreground="#374655" FontSize="18" Margin="15 0 0 0" VerticalAlignment="Center"/>
                 </StackPanel>
 
                 <!--Form Percentage-->
-                <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" Margin="0 20 20 0"/>
+                <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" Margin="0,20,20,41" Grid.RowSpan="2"/>
 
-                <Separator Grid.Row="1" Grid.ColumnSpan="2" Height="0.7" Margin="-20 20 -20 20" Background="#E1E6EB"/>
+                <Label Content="Work Order Date" HorizontalAlignment="Left" Margin="4,-60,5,0" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
+                <DatePicker Margin="5,0,5,0" Grid.Row="2"  Text="" Grid.Column="0" />
+                <uc:MyTextBox Margin="5,0,5,0" Grid.Row="2" Grid.Column="1" Caption="Package"/>
+                <uc:MyTextBox Margin="5,0,5,0" Grid.Row="2" Grid.Column="2" Caption="Package"/>
+                
+                <uc:MyTextBox Margin="5,0,5,0" Grid.Row="3" Grid.Column="0" Caption="Package Description"/>
+                <uc:MyTextBox Margin="5,0,5,0" Grid.Row="3"  Grid.Column="1" Caption="Package Quantity"/>
+                <uc:MyTextBox Margin="5,0,5,0" Grid.Row="3" Grid.Column="2" Caption="UNIT"/>
 
-                <!--Inputs-->
-                <uc:MyTextBox Grid.Column="0" Grid.Row="2" Caption="Driver's Name"  x:Name="DriverNameTextBox"/>
-                <uc:MyTextBox Grid.Column="0" Grid.Row="3" Caption="Licence Number" InputType="Numeric" x:Name="LicenceNumberTextBox"/>
-                <!--<uc:MyTextBox Grid.Column="0" Grid.Row="4" Caption="Licence expiry date" x:Name="LicenceExpiryDateTextBox"/>-->
-                <uc:MyDatePicker Grid.Column="0" Grid.Row="4" DCaption="DOBsfsd" x:Name="LicenceExpiryDateTextBox"/>
-                <uc:MyTextBox Grid.Column="0" Grid.Row="5" Caption="Address" x:Name="AddressTextBox"/>
-                <uc:MyTextBox Grid.Column="1" Grid.Row="2" Caption="Contact Number" InputType="Numeric" x:Name="ContectNumberTextBox"/>
-                <uc:MyTextBox Grid.Column="1" Grid.Row="3" Caption="Licence Type" x:Name="LicenceTypeTextBox"/>
-                <uc:MyDatePicker Grid.Column="1" Grid.Row="4" DCaption="DOBsfsd" x:Name="DOBTextBox"/>
-                <!--<uc:MyTextBox Grid.Column="1" Grid.Row="4" Caption="DOB"/>-->
-                <uc:MyTextBox Grid.Column="1" Grid.Row="5" Caption="Alt Contact Number" InputType="Numeric" x:Name="AltContectNumberTextBox"/>
-
-                <!--Form Bottom Background-->
-                <Border Grid.Row="6" Grid.ColumnSpan="2" Height="80" Background="#f6f6f6" CornerRadius="0 0 10 10" Margin="-20 40 -20 0"/>
-
-                <!--Main Button-->
-                <Button Grid.Column="1" Grid.Row="6" Content="Save" HorizontalAlignment="Right" Margin="0 40 20 0" Style="{StaticResource addButton}">
-                    <Button.Effect>
-                        <DropShadowEffect Direction="-120" BlurRadius="10" Opacity="0.3" ShadowDepth="5" Color="#4880FF"/>
-                    </Button.Effect>
-                </Button>
-
-                <!--Secondary Button-->
-                <Button Grid.Row="6" Content="Cancel" HorizontalAlignment="Left" Margin="20 40 0 0" Style="{StaticResource secondaryButton}" Width="150" Click="Button_Click"/>
-                <Label Grid.Column="1" Content="Date of Birth" HorizontalAlignment="Left" Margin="16,8,0,0" Grid.Row="4" VerticalAlignment="Top" Foreground="#97A5B4"/>
-                <Label Content="Licence Expiry Date" HorizontalAlignment="Left" Margin="15,6,0,0" Grid.Row="4" VerticalAlignment="Top" Foreground="#97A5B4"/>
+                <Label Content="Package Description" HorizontalAlignment="Left" Margin="4,-60,5,0" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center"/>
+                <ComboBox Margin="5,0,5,0" Grid.Row="5"  Text="" Grid.Column="0" Height="35">
+                    <ComboBoxItem Content="Coffie"></ComboBoxItem>
+                    <ComboBoxItem Content="Tea"></ComboBoxItem>
+                    <ComboBoxItem Content="Orange Juice"></ComboBoxItem>
+                    <ComboBoxItem Content="Milk"></ComboBoxItem>
+                    <ComboBoxItem Content="Iced Tea"></ComboBoxItem>
+                    <ComboBoxItem Content="Mango Shake"></ComboBoxItem>
+                </ComboBox>
+                <uc:MyTextBox Margin="5,0,5,0" Grid.Row="5" Grid.Column="1" Caption="Package Quantity"/>
+                <uc:MyTextBox Margin="5,0,5,0" Grid.Row="5" Grid.Column="2" Caption="UNIT"/>
 
             </Grid>
         </Border>

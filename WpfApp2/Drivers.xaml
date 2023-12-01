@@ -71,7 +71,7 @@
             <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyle1}" Margin="10,10,0,60" Grid.Row="5" Grid.RowSpan="2">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Number}"/>
-                    <DataGridTemplateColumn Header="Member" IsReadOnly="True" Width="*">
+                    <DataGridTemplateColumn Header="Driver Name" IsReadOnly="True" Width="*">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
