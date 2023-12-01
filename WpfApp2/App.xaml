@@ -6,7 +6,11 @@
     xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
     <Application.Resources>
 
-<!--AddDriver-->
+        <Style TargetType="ComboBox">
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <!--AddDriver-->
         <Style TargetType="TextBox">
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="Foreground" Value="#384756" />

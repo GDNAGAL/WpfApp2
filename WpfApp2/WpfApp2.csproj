@@ -8,12 +8,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\plus.png" />
+    <None Remove="Images\q1.png" />
+    <None Remove="Images\reload.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="BingMapsRESTToolkit" Version="1.1.4" />
     <PackageReference Include="GoogleMapsApi" Version="1.2.1" />
     <PackageReference Include="MahApps.Metro.IconPacks" Version="4.11.0" />
     <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.11.0" />
     <PackageReference Include="Microsoft.Maps.MapControl.WPF" Version="1.0.0.3" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\plus.png" />
+    <Resource Include="Images\q1.png" />
+    <Resource Include="Images\reload.png" />
   </ItemGroup>
 
 </Project>
