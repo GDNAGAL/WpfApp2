@@ -71,7 +71,7 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButton}">
+                            <Button Style="{StaticResource menuButton}" Click="Routes_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="CashMultiple" Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Routes"/>
@@ -101,7 +101,7 @@
 
             <!--Main Section--> 
             <Grid Grid.Column="1" Margin="50,20,50,20">
-                <Frame Name="Main" HorizontalAlignment="Stretch" NavigationUIVisibility="Hidden"/>
+                <Frame Name="LftRender" HorizontalAlignment="Stretch" NavigationUIVisibility="Hidden"/>
             </Grid>
         </Grid>
     </Border>

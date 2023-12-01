@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
+
 namespace WpfApp2
 {
     public partial class MainWindow : Window
@@ -45,18 +46,23 @@ namespace WpfApp2
 
         private void Drivers_Click(object sender, RoutedEventArgs e)
         {
-            Main.Content = new Drivers();
+            LftRender.Content = new Drivers();
            
         }
 
         private void Vehicles_Click(object sender, RoutedEventArgs e)
         {
-            Main.Content = new Vehicles();
+            LftRender.Content = new Vehicles();
         }
 
         private void WorkOrder_Click(object sender, RoutedEventArgs e)
         {
-            Main.Content = new WorkOrders();
+            LftRender.Content = new WorkOrders();
+        }
+
+        private void Routes_Click(object sender, RoutedEventArgs e)
+        {
+            LftRender.Content = new Routes();
         }
     }
 }
