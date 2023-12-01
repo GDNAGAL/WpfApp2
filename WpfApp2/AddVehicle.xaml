@@ -50,20 +50,19 @@
                 <Separator Grid.Row="1" Grid.ColumnSpan="2" Height="0.7" Margin="-20 20 -20 20" Background="#E1E6EB"/>
 
                 <!--Inputs-->
-                <uc:MyTextBox Grid.Column="0" Grid.Row="2" Caption="Vehicle Number"/>
-                <uc:MyTextBox Grid.Column="0" Grid.Row="3" Caption="Vehicle Type"/>
-                <uc:MyTextBox Grid.Column="0" Grid.Row="4" Caption="Capacity"/>
-                <uc:MyTextBox Grid.Column="0" Grid.Row="5" Caption="Chassis Number"/>
-                <uc:MyTextBox Grid.Column="1" Grid.Row="2" Caption="Registration Number"/>
-                <uc:MyTextBox Grid.Column="1" Grid.Row="3" Caption="Model"/>
-                <uc:MyTextBox Grid.Column="1" Grid.Row="4" Caption="Capacity(Unit)"/>
-                <uc:MyTextBox Grid.Column="1" Grid.Row="5" Caption="Make Year"/>
-
+               <uc:MyTextBox Grid.Column="0" Grid.Row="2" Caption="Vehicle Number" x:Name="VehicleNumber"/>
+<uc:MyTextBox Grid.Column="0" Grid.Row="3" Caption="Vehicle Type" InputType="Numeric" x:Name="VehicleType"/>
+<uc:MyTextBox Grid.Column="0" Grid.Row="4" Caption="Capacity" x:Name="Capacity"/>
+<uc:MyTextBox Grid.Column="0" Grid.Row="5" Caption="Chassis Number" x:Name="ChassisNumber"/>
+<uc:MyTextBox Grid.Column="1" Grid.Row="2" Caption="Registration Number" x:Name="RegistrationNumber"/>
+<uc:MyTextBox Grid.Column="1" Grid.Row="3" Caption="Model" x:Name="Model"/>
+<uc:MyTextBox Grid.Column="1" Grid.Row="4" Caption="Capacity(Unit)" x:Name="Capacity_Unit"/>
+<uc:MyTextBox Grid.Column="1" Grid.Row="5" Caption="Color" x:Name="Color"/>
                 <!--Form Bottom Background-->
                 <Border Grid.Row="6" Grid.ColumnSpan="2" Height="80" Background="#f6f6f6" CornerRadius="0 0 10 10" Margin="-20 40 -20 0"/>
 
                 <!--Main Button-->
-                <Button Grid.Column="1" Grid.Row="6" Content="Save" HorizontalAlignment="Right" Margin="0 40 20 0" Style="{StaticResource mainButton}">
+                <Button Grid.Column="1" Grid.Row="6" Content="Save" HorizontalAlignment="Right" Margin="0 40 20 0" Style="{StaticResource mainButton}" Click="Button_Click">
                     <Button.Effect>
                         <DropShadowEffect Direction="-120" BlurRadius="10" Opacity="0.3" ShadowDepth="5" Color="#4880FF"/>
                     </Button.Effect>
