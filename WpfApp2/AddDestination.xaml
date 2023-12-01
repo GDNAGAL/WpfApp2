@@ -1,0 +1,52 @@
+﻿<Window x:Class="WpfApp2.AddDestination"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:uc="clr-namespace:WpfApp2.UserControls"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+        Title="Add Destination" Height="500" Width="400"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </Window.Resources>
+    <Grid>
+        <Border CornerRadius="7" Background="#ffffff" >
+            <Border.Effect>
+                <DropShadowEffect Direction="-130" BlurRadius="30" ShadowDepth="5" Opacity="0.1"/>
+            </Border.Effect>
+
+            <Grid Margin="20 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Form Title-->
+                <StackPanel Orientation="Horizontal" Margin="4,0,9,1" Grid.Row="1">
+                    <Border CornerRadius="50" BorderThickness="1.5" BorderBrush="#EFEFEF">
+
+                    </Border>
+
+                    <TextBlock Text="Add Pickup or Destination Point" Foreground="#374655" FontSize="18" Margin="15 0 0 0" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <!--Form Percentage-->
+                <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" Margin="0,20,20,41" Grid.RowSpan="2"/>
+                <uc:MyTextBox Grid.Row="2" Grid.Column="0" Caption="Point Name"/>
+                <Button Content="Add Point" Cursor="Hand" Grid.Row="2" Grid.Column="0" Height="35" VerticalAlignment="Top" Margin="20 86 22 0"/>
+
+            </Grid>
+        </Border>
+
+    </Grid>
+</Window>

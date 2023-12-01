@@ -51,10 +51,6 @@ namespace WpfApp2
 
         private async void AddDriver_Button_Click(object sender, RoutedEventArgs e)
         {
-            //if(DriverNameTextBox.TextValue == "")
-            //{
-            //     MessageBox.Show("Name Is Required");
-            //}
             Model.DriverDetails details = new Model.DriverDetails();
             details.FullName = DriverNameTextBox.TextValue;
             details.LicenseExpiryDate = TimeZoneInfo.ConvertTimeFromUtc(Convert.ToDateTime(LicenceExpiryDateTextBox.TextValue), INDIAN_ZONE);
@@ -67,15 +63,6 @@ namespace WpfApp2
 
             var dataAsString = JsonSerializer.Serialize(details);
 
-            //using (var client = new HttpClient())
-            //{
-            //    var endpoint = new Uri("https://localhost:7082/api/DriverDetails/AddDriver");
-            //    var dataAsString = JsonSerializer.Serialize(details);
-            //    var content = new StringContent(dataAsString);
-            //    //content.Headers.ContentType = contentType;
-            //    client.PostAsync(endpoint, content);
-
-            //}
             var client = new HttpClient();
             var request = new HttpRequestMessage(HttpMethod.Post, "https://localhost:7082/api/DriverDetails/AddDriver");
             request.Headers.Add("accept", "text/plain");

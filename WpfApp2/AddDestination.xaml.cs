@@ -14,20 +14,14 @@ using System.Windows.Shapes;
 
 namespace WpfApp2
 {
-    /// <summary>
-    /// Interaction logic for AddWorkOrder.xaml
-    /// </summary>
-    public partial class AddWorkOrder : Window
+
+    public partial class AddDestination : Window
     {
-        public AddWorkOrder()
+        public AddDestination()
         {
             InitializeComponent();
         }
 
-        private void AddDestination_Button_Click(object sender, RoutedEventArgs e)
-        {
-            AddDestination add_destination = new AddDestination();
-            add_destination.ShowDialog();
-        }
+
     }
 }

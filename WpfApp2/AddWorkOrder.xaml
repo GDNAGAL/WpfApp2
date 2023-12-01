@@ -88,7 +88,9 @@
                 
                 <Label Content="Actions" Foreground="#97A5B4" HorizontalAlignment="Left" Margin="19,10,5,0" Grid.Row="5" Grid.Column="2" VerticalAlignment="Top"/>
                 <Image Cursor="Hand" ToolTip="Refill Points" Source="pack://application:,,,/WpfApp2;component/Images/reload.png" Grid.Column="2" HorizontalAlignment="Left" Height="35" Margin="22,36,22,0" Grid.Row="5" VerticalAlignment="Top" Width="35"/>
-                <Image Cursor="Hand" ToolTip="Add New Pikup or Drop Point" Source="pack://application:,,,/WpfApp2;component/Images/plus.png" Grid.Column="2" HorizontalAlignment="Left" Height="35" Margin="65,36,22,0" Grid.Row="5" VerticalAlignment="Top" Width="35"/>
+                <Button  Background="Transparent" Cursor="Hand" ToolTip="Add New Pikup or Drop Point"  Grid.Column="2" HorizontalAlignment="Left" Height="35" Margin="65,36,22,0" Grid.Row="5" VerticalAlignment="Top" Width="35" Click="AddDestination_Button_Click">
+                    <Image Source="pack://application:,,,/WpfApp2;component/Images/plus.png"/>
+                </Button>
                 <Button Content="Get Routes" ToolTip="Get Routes" Cursor="Hand" Grid.Row="5" Grid.Column="2" Width="100" Height="35" VerticalAlignment="Top" Margin="50 36 22 0"/>
 
             </Grid>

@@ -20,6 +20,8 @@ namespace WpfApp2.Model
 
         public DateTime DOB { get; set; }
 
+        public string? DOBs {  get; set; }
+
         public int LicenseType { get; set; }
 
         public string? LicenseNo { get; set; }
@@ -40,9 +42,11 @@ namespace WpfApp2.Model
         public int ZipCode { get; set; }
 
         public string? Country { get; set; }
-        //public string? Character { get; set; }
-        //public string? Number { get; set; }
-        //public Brush? BgColor { get; set; }
+        public string? Character { get; set; }
+        public string? Number { get; set; }
+        public Brush? BgColor { get; set; }
+
+
 
     }
 }

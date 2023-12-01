@@ -84,7 +84,7 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                        <DataGridTextColumn Header="DOB" Binding="{Binding DOB}" IsReadOnly="True" Width="*"/>
+                        <DataGridTextColumn Header="DOB" Binding="{Binding DOBs}" IsReadOnly="True" Width="*"/>
                     <DataGridTextColumn Header="Email Address" Binding="{Binding Email}" IsReadOnly="True" Width="*"/>
                         <DataGridTextColumn Header="Contact Number" Binding="{Binding ContactNo}" IsReadOnly="True" Width="*"/>
                     <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
