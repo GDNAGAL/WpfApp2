@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfApp2.Model;
+using WpfApp2.UserControls;
 
 namespace WpfApp2
 {
@@ -28,6 +29,13 @@ namespace WpfApp2
         public AddWorkOrder()
         {
             InitializeComponent();
+
+            // Disable dates prior to today
+            WorkOrderDatePicker.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1)));
+
+            // Enable the next 30 days including today
+            DateTime endDate = DateTime.Today.AddDays(29);
+            WorkOrderDatePicker.DisplayDateEnd = endDate;
         }
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -70,6 +78,26 @@ namespace WpfApp2
         {
             AddDestination add_destination = new AddDestination();
             add_destination.ShowDialog();
+        }
+
+        private void PickupPoint_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+     
+            if (((ComboBoxItem)DropPoint.SelectedItem)!=null && ((ComboBoxItem)PickupPoint.SelectedItem) != null && ((ComboBoxItem)PickupPoint.SelectedItem).Tag.ToString() == ((ComboBoxItem)DropPoint.SelectedItem).Tag.ToString())
+            {
+                MessageBox.Show("Can Not Set Both Point Same.","Warning",MessageBoxButton.OK,MessageBoxImage.Warning);
+                PickupPoint.SelectedItem = null;
+            }
+             
+        }
+
+        private void DropPoint_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (((ComboBoxItem)PickupPoint.SelectedItem)!=null && ((ComboBoxItem)DropPoint.SelectedItem) != null && ((ComboBoxItem)PickupPoint.SelectedItem).Tag.ToString() == ((ComboBoxItem)DropPoint.SelectedItem).Tag.ToString())
+            {
+                MessageBox.Show("Can Not Set Both Point Same.", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                DropPoint.SelectedItem=null;
+            }
         }
     }
 }

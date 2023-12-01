@@ -30,9 +30,8 @@
                 <Border Grid.Row="1" Background="#623ED0" CornerRadius="0 20 20 0">
                     <DockPanel>
                         <!--Menu Logo-->
-                        <Border Width="80" Height="80" Padding="3" Background="White" CornerRadius="100" DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="0 50 0 0">
-
-                        </Border>
+                            <Image Width="80" Height="80"   DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="0 50 0 0" Source="pack://application:,,,/WpfApp2;component/Images/user.png"/>
+                        
 
                         <!--Menu Titles-->
                         <TextBlock Text="Test User" Foreground="White" FontSize="22" FontWeight="SemiBold" DockPanel.Dock="Top" Margin="5 25 0 10" TextAlignment="Center"/>
