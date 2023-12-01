@@ -60,7 +60,7 @@ namespace WpfApp2
         }
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            var converter = new BrushConverter();
+            //var converter = new BrushConverter();
             //string[] color = { "#1098AD", "#1E88E5", "#FF8F00", "#FF5252", "#0CA678", "#6741D9", "#FF6D00", "#FF5252", "#1E88E5", "#0CA678" };
             using (HttpClient client = new HttpClient())
             {

@@ -42,8 +42,8 @@
 
                 <!--Form Percentage-->
                 <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" Margin="0,20,20,41" Grid.RowSpan="2"/>
-                <uc:MyTextBox Grid.Row="2" Grid.Column="0" Caption="Point Name"/>
-                <Button Content="Add Point" Cursor="Hand" Grid.Row="2" Grid.Column="0" Height="35" VerticalAlignment="Top" Margin="20 86 22 0"/>
+                <uc:MyTextBox Grid.Row="2" Grid.Column="0" Caption="Point Name" x:Name="DestinationName"/>
+                <Button Content="Add Point" Cursor="Hand" Grid.Row="2" Grid.Column="0" Height="35" VerticalAlignment="Top" Margin="20 86 22 0" Click="Add_Destination" />
 
             </Grid>
         </Border>

@@ -65,7 +65,11 @@ namespace WpfApp2
             var request = new HttpRequestMessage(HttpMethod.Post, $"https://localhost:7082/api/DriverDetails/DeleteDriver?DriverId={DriverId}");
             request.Headers.Add("accept", "text/plain");
             var response = await client.SendAsync(request);
-            response.EnsureSuccessStatusCode();
+            try { response.EnsureSuccessStatusCode(); }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
             MessageBox.Show("Driver Deleted Successfully", "Data Deleted", MessageBoxButton.OK, MessageBoxImage.Hand);
             GetDriverData();
@@ -83,7 +87,11 @@ namespace WpfApp2
             using (HttpClient client = new HttpClient())
             {
                 var respons = await client.GetAsync("https://localhost:7082/api/DriverDetails/GetAllDrivers");
-                respons.EnsureSuccessStatusCode();
+                try { respons.EnsureSuccessStatusCode(); }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"{ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
                 if (respons.IsSuccessStatusCode)
                 {
                     var jsonString = await respons.Content.ReadAsStringAsync();
@@ -147,7 +155,11 @@ namespace WpfApp2
                     var request = new HttpRequestMessage(HttpMethod.Post, $"https://localhost:7082/api/DriverDetails/SearchDriver?search={searchText}");
                     request.Headers.Add("accept", "text/plain");
                     var respons = await client.SendAsync(request);
-                    respons.EnsureSuccessStatusCode();
+                    try { respons.EnsureSuccessStatusCode(); }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"{ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                     if (respons.IsSuccessStatusCode)
                     {
                         var jsonString = await respons.Content.ReadAsStringAsync();

@@ -8,7 +8,8 @@
         mc:Ignorable="d"
         Title="AddWorkOrder" Height="600" Width="950"
         WindowState="Maximized"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        Loaded="Page_Loaded">
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
@@ -67,27 +68,18 @@
                 <uc:MyTextBox Margin="5,0,5,0" Grid.Row="3" Grid.Column="2" Caption="UNIT"/>
 
                 <Label Content="Pick-Up Point" Foreground="#97A5B4" HorizontalAlignment="Left" Margin="19,10,5,0" Grid.Row="5" Grid.Column="0" VerticalAlignment="Top"/>
-                <ComboBox Margin="22,36,22,0" Grid.Row="5"  Text="" Grid.Column="0" Height="35" VerticalAlignment="Top">
-                    <ComboBoxItem Content="Coffie"></ComboBoxItem>
-                    <ComboBoxItem Content="Tea"></ComboBoxItem>
-                    <ComboBoxItem Content="Orange Juice"></ComboBoxItem>
-                    <ComboBoxItem Content="Milk"></ComboBoxItem>
-                    <ComboBoxItem Content="Iced Tea"></ComboBoxItem>
-                    <ComboBoxItem Content="Mango Shake"></ComboBoxItem>
+                <ComboBox Margin="22,36,22,0" Grid.Row="5"  Text="" Grid.Column="0" Height="35" VerticalAlignment="Top" x:Name="PickupPoint">
+                    
+                    
                 </ComboBox>
                 
                 <Label Content="Drop Point" Foreground="#97A5B4" HorizontalAlignment="Left" Margin="19,10,5,0" Grid.Row="5" Grid.Column="1" VerticalAlignment="Top"/>
-                <ComboBox Margin="22,36,22,0" Grid.Row="5"  Text="" Grid.Column="1" Height="35" VerticalAlignment="Top">
-                    <ComboBoxItem Content="Coffie"></ComboBoxItem>
-                    <ComboBoxItem Content="Tea"></ComboBoxItem>
-                    <ComboBoxItem Content="Orange Juice"></ComboBoxItem>
-                    <ComboBoxItem Content="Milk"></ComboBoxItem>
-                    <ComboBoxItem Content="Iced Tea"></ComboBoxItem>
-                    <ComboBoxItem Content="Mango Shake"></ComboBoxItem>
+                <ComboBox Margin="22,36,22,0" Grid.Row="5"  Text="" Grid.Column="1" Height="35" VerticalAlignment="Top" x:Name="DropPoint">
+                    
                 </ComboBox>
                 
                 <Label Content="Actions" Foreground="#97A5B4" HorizontalAlignment="Left" Margin="19,10,5,0" Grid.Row="5" Grid.Column="2" VerticalAlignment="Top"/>
-                <Image Cursor="Hand" ToolTip="Refill Points" Source="pack://application:,,,/WpfApp2;component/Images/reload.png" Grid.Column="2" HorizontalAlignment="Left" Height="35" Margin="22,36,22,0" Grid.Row="5" VerticalAlignment="Top" Width="35"/>
+                <Image Cursor="Hand" ToolTip="Refill Points" Source="pack://application:,,,/WpfApp2;component/Images/reload.png" Grid.Column="2" HorizontalAlignment="Left" Height="35" Margin="22,36,22,0" Grid.Row="5" VerticalAlignment="Top" Width="35" MouseDown="Page_Loaded"/>
                 <Button  Background="Transparent" Cursor="Hand" ToolTip="Add New Pikup or Drop Point"  Grid.Column="2" HorizontalAlignment="Left" Height="35" Margin="65,36,22,0" Grid.Row="5" VerticalAlignment="Top" Width="35" Click="AddDestination_Button_Click">
                     <Image Source="pack://application:,,,/WpfApp2;component/Images/plus.png"/>
                 </Button>
