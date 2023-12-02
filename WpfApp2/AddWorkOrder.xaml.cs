@@ -27,11 +27,12 @@ namespace WpfApp2
     {
         ObservableCollection<DestinationDetails> members = new ObservableCollection<DestinationDetails>();
         ObservableCollection<RoutesDetails> routes = new ObservableCollection<RoutesDetails>();
+        ObservableCollection<VehicleDetails> vehicles = new ObservableCollection<VehicleDetails>();
 
         public AddWorkOrder()
         {
             InitializeComponent();
-            LoadData();
+            //LoadData();
             loadDestinations();
 
             // Disable dates prior to today
@@ -42,8 +43,8 @@ namespace WpfApp2
             WorkOrderDatePicker.DisplayDateEnd = endDate;
         }
 
-        private void LoadData()
-        {
+        //private void LoadData()
+        //{
             // Create a DataTable with static data
             //DataTable dataTable = new DataTable("SampleData");
             //dataTable.Columns.Add("RouteID", typeof(int));
@@ -58,29 +59,29 @@ namespace WpfApp2
             //// Set the DataTable as the DataGrid's ItemsSource
             //dummydataGrid.ItemsSource = dataTable.DefaultView;
 
-            DataTable truckdataTable = new DataTable("SampleData");
-            truckdataTable.Columns.Add("VehicleID", typeof(int));
-            truckdataTable.Columns.Add("Vehicle Type", typeof(string));
-            truckdataTable.Columns.Add("Vehicle Name", typeof(string));
-            truckdataTable.Columns.Add("Vehicle Capacity", typeof(string));
+            //DataTable truckdataTable = new DataTable("SampleData");
+            //truckdataTable.Columns.Add("VehicleID", typeof(int));
+            //truckdataTable.Columns.Add("Vehicle Type", typeof(string));
+            //truckdataTable.Columns.Add("Vehicle Name", typeof(string));
+            //truckdataTable.Columns.Add("Vehicle Capacity", typeof(string));
 
             // Add some rows
-            truckdataTable.Rows.Add(2121211, "Load Body", "TATA", "5000 KG");
-            truckdataTable.Rows.Add(5411552, "Load Body", "Ashok LeyLand", "15000 KG");
-            truckdataTable.Rows.Add(1541663, "Load Body", "TATA", "5000 KG");
-            truckdataTable.Rows.Add(2121211, "Load Body", "TATA", "5000 KG");
-            truckdataTable.Rows.Add(5411552, "Load Body", "Ashok LeyLand", "15000 KG");
-            truckdataTable.Rows.Add(1541663, "Load Body", "TATA", "5000 KG");
-            truckdataTable.Rows.Add(2121211, "Load Body", "TATA", "5000 KG");
-            truckdataTable.Rows.Add(5411552, "Load Body", "Ashok LeyLand", "15000 KG");
-            truckdataTable.Rows.Add(1541663, "Load Body", "TATA", "5000 KG");
-            truckdataTable.Rows.Add(2121211, "Load Body", "TATA", "5000 KG");
-            truckdataTable.Rows.Add(5411552, "Load Body", "Ashok LeyLand", "15000 KG");
-            truckdataTable.Rows.Add(1541663, "Load Body", "TATA", "5000 KG");
+            //truckdataTable.Rows.Add(2121211, "Load Body", "TATA", "5000 KG");
+            //truckdataTable.Rows.Add(5411552, "Load Body", "Ashok LeyLand", "15000 KG");
+            //truckdataTable.Rows.Add(1541663, "Load Body", "TATA", "5000 KG");
+            //truckdataTable.Rows.Add(2121211, "Load Body", "TATA", "5000 KG");
+            //truckdataTable.Rows.Add(5411552, "Load Body", "Ashok LeyLand", "15000 KG");
+            //truckdataTable.Rows.Add(1541663, "Load Body", "TATA", "5000 KG");
+            //truckdataTable.Rows.Add(2121211, "Load Body", "TATA", "5000 KG");
+            //truckdataTable.Rows.Add(5411552, "Load Body", "Ashok LeyLand", "15000 KG");
+            //truckdataTable.Rows.Add(1541663, "Load Body", "TATA", "5000 KG");
+            //truckdataTable.Rows.Add(2121211, "Load Body", "TATA", "5000 KG");
+            //truckdataTable.Rows.Add(5411552, "Load Body", "Ashok LeyLand", "15000 KG");
+            //truckdataTable.Rows.Add(1541663, "Load Body", "TATA", "5000 KG");
 
-            // Set the DataTable as the DataGrid's ItemsSource
-            dummytruckdataGrid.ItemsSource = truckdataTable.DefaultView;
-        }
+            //// Set the DataTable as the DataGrid's ItemsSource
+            //dummytruckdataGrid.ItemsSource = truckdataTable.DefaultView;
+        //}
         private async void loadDestinations()
         {
             
@@ -187,6 +188,10 @@ namespace WpfApp2
                             }
                             dummydataGrid.ItemsSource = dataTable.DefaultView;
                             availableroutestack.Visibility = Visibility.Visible;
+                            if (routes.Count > 0)
+                            {
+                                GetVehicleDetails.Visibility = Visibility.Visible;
+                            }
 
                         }
                     }
@@ -197,8 +202,47 @@ namespace WpfApp2
                 }
 
             }
+            else
+            {
+                MessageBox.Show("Please Select Both Points","Alert",MessageBoxButton.OK,MessageBoxImage.Exclamation);
+            }
         }
+        private async void Get_Vehicle(object sender, RoutedEventArgs e)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var respons = await client.GetAsync("https://localhost:7082/api/Vehicle/GetAllVehicleDetails");
+                    respons.EnsureSuccessStatusCode();
+                    if (respons.IsSuccessStatusCode)
+                    {
+                        var jsonString = await respons.Content.ReadAsStringAsync();
+                        vehicles = JsonConvert.DeserializeObject<ObservableCollection<VehicleDetails>>(jsonString);
+                        DataTable truckdataTable = new DataTable("SampleData");
+                        truckdataTable.Columns.Add("Vehicle Name", typeof(string));
+                        truckdataTable.Columns.Add("Vehicle Number", typeof(string));
+                        truckdataTable.Columns.Add("Vehicle Type", typeof(string));
+                        truckdataTable.Columns.Add("Vehicle Capacity", typeof(string));
+                        truckdataTable.Columns.Add("Vehicle Capacity Unit", typeof(string));
+                        int i = 1;
+                        foreach (var item in vehicles)
+                        {
+                            truckdataTable.Rows.Add($"Vehicle {i++}",item.VehicleNumber,item.VehicleType,item.Capacity,item.CapacityUnit );
 
+                        }
+                        dummytruckdataGrid.ItemsSource = truckdataTable.DefaultView;
+                        availablevehicle.Visibility = Visibility.Visible;
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"{ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+
+        }
         private void Refresh_Destination_Button_Click(object sender, RoutedEventArgs e)
         {
             loadDestinations();
