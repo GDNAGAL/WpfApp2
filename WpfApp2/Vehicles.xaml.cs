@@ -71,28 +71,35 @@ namespace WpfApp2
             //string[] color = { "#1098AD", "#1E88E5", "#FF8F00", "#FF5252", "#0CA678", "#6741D9", "#FF6D00", "#FF5252", "#1E88E5", "#0CA678" };
             using (HttpClient client = new HttpClient())
             {
-                var respons = await client.GetAsync("https://localhost:7082/api/Vehicle/GetAllVehicleDetails");
-                respons.EnsureSuccessStatusCode();
-                if (respons.IsSuccessStatusCode)
+                try
                 {
-                    var jsonString = await respons.Content.ReadAsStringAsync();
-                    members = JsonConvert.DeserializeObject<ObservableCollection<VehicleDetails>>(jsonString);
-                    int j = 1;
-                    foreach (var item in members)
+                    var respons = await client.GetAsync("https://localhost:7082/api/Vehicle/GetAllVehicleDetails");
+                    respons.EnsureSuccessStatusCode();
+                    if (respons.IsSuccessStatusCode)
                     {
+                        var jsonString = await respons.Content.ReadAsStringAsync();
+                        members = JsonConvert.DeserializeObject<ObservableCollection<VehicleDetails>>(jsonString);
+                        int j = 1;
+                        foreach (var item in members)
+                        {
 
-                        //item.BgColor = (Brush)converter.ConvertFromInvariantString(color[i]);
-                        item.Number = (j).ToString();
-                        //item.Character = item.FullName[0].ToString().ToUpper();
+                            //item.BgColor = (Brush)converter.ConvertFromInvariantString(color[i]);
+                            item.Number = (j).ToString();
+                            //item.Character = item.FullName[0].ToString().ToUpper();
 
-                        j++;
+                            j++;
+                        }
+                        membersDataGrid.ItemsSource = members;
+
                     }
-                    membersDataGrid.ItemsSource = members;
-
+                    else
+                    {
+                        MessageBox.Show($"Server Error Code{respons.StatusCode}");
+                    }
                 }
-                else
+                catch(Exception ex)
                 {
-                    MessageBox.Show($"Server Error Code{respons.StatusCode}");
+                    MessageBox.Show($"{ex.Message}","Error",MessageBoxButton.OK,MessageBoxImage.Error);
                 }
             }
         }

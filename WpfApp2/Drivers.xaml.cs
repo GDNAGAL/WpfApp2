@@ -86,37 +86,40 @@ namespace WpfApp2
             string[] color = { "#1098AD", "#1E88E5", "#FF8F00", "#FF5252", "#0CA678", "#6741D9", "#FF6D00", "#FF5252", "#1E88E5", "#0CA678" };
             using (HttpClient client = new HttpClient())
             {
-                var respons = await client.GetAsync("https://localhost:7082/api/DriverDetails/GetAllDrivers");
-                try { respons.EnsureSuccessStatusCode(); }
+                try {
+                    var respons = await client.GetAsync("https://localhost:7082/api/DriverDetails/GetAllDrivers");
+                    respons.EnsureSuccessStatusCode();
+                    if (respons.IsSuccessStatusCode)
+                    {
+                        var jsonString = await respons.Content.ReadAsStringAsync();
+                        members = JsonConvert.DeserializeObject<ObservableCollection<DriverDetails>>(jsonString);
+                        int i = 0, j = 1;
+                        foreach (var item in members)
+                        {
+                            if (i == color.Length)
+                            {
+                                i = 0;
+                            }
+                            item.BgColor = (Brush)converter.ConvertFromInvariantString(color[i]);
+                            item.Number = (j).ToString();
+                            item.Character = item.FullName[0].ToString().ToUpper();
+                            item.DOBs = item.DOB.ToShortDateString();
+                            i++;
+                            j++;
+                        }
+                        membersDataGrid.ItemsSource = members;
+
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Server Error Code{respons.StatusCode}");
+                    }
+                }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"{ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-                if (respons.IsSuccessStatusCode)
-                {
-                    var jsonString = await respons.Content.ReadAsStringAsync();
-                    members = JsonConvert.DeserializeObject<ObservableCollection<DriverDetails>>(jsonString);
-                    int i = 0, j = 1;
-                    foreach (var item in members)
-                    {
-                        if (i == color.Length)
-                        {
-                            i = 0;
-                        }
-                        item.BgColor = (Brush)converter.ConvertFromInvariantString(color[i]);
-                        item.Number = (j).ToString();
-                        item.Character = item.FullName[0].ToString().ToUpper();
-                        item.DOBs = item.DOB.ToShortDateString();
-                        i++;
-                        j++;
-                    }
-                    membersDataGrid.ItemsSource = members;
-
-                }
-                else
-                {
-                    MessageBox.Show($"Server Error Code{respons.StatusCode}");
-                }
+                
             }
         }
 
