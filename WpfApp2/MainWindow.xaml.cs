@@ -12,6 +12,8 @@ namespace WpfApp2
         public MainWindow()
         {
             InitializeComponent(); 
+            Dashboard dashboard = new Dashboard();
+            LftRender.Content = dashboard;
         }
 
         private bool IsMaximize = false;
