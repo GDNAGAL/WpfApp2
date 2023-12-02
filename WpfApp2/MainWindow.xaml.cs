@@ -66,5 +66,11 @@ namespace WpfApp2
         {
             LftRender.Content = new Routes();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Dashboard dashboard = new Dashboard();  
+            LftRender.Content = dashboard;
+        }
     }
 }
