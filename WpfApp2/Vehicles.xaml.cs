@@ -43,7 +43,14 @@ namespace WpfApp2
             var request = new HttpRequestMessage(HttpMethod.Post, $"https://localhost:7082/api/Vehicle/DeleteVehicle?VehicleId={VehileId}");
             request.Headers.Add("accept", "text/plain");
             var response = await client.SendAsync(request);
+            try
+            {
+
             response.EnsureSuccessStatusCode();
+            }
+            catch (Exception ex) { 
+                MessageBox.Show($"{ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);  
+            }
             if (response.IsSuccessStatusCode)
             {
 

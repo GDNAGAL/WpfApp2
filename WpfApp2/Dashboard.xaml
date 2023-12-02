@@ -33,20 +33,56 @@
             <!--Page Title-->
             <TextBlock Text="Dashboard" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0" Foreground="#121518" HorizontalAlignment="Left"/>
 
-            <Border Grid.Row="2" Grid.Column="0" Margin="0 20 5 0" CornerRadius="5"  Background="#333">
-                <Label Foreground="white" Content="Check"/>      
-            </Border>                                              
-                                                                   
-            <Border Grid.Row="2" Grid.Column="1" Margin="5 20 5 0" CornerRadius="5" Background="#333">
-                <Label Foreground="white" Content="Check"/>      
-            </Border>                                              
-                                                                   
-            <Border Grid.Row="2" Grid.Column="2" Margin="5 20 5 0" CornerRadius="5" Background="#333">
-                <Label Foreground="white" Content="Check"/>
+            <Border Grid.Row="2" Grid.Column="0" Margin="0 20 5 0" Height="80" CornerRadius="5" Background="#FFAFEFF1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Foreground="Black" Content="Total Work Orders"/>
+                    <Label Grid.Row="1" Foreground="Gray" Content="CRS:25%" FontSize="11"/>
+                </Grid>
             </Border>
-    
-            <Border Grid.Row="2" Grid.Column="3" Margin="5 20 0 0" CornerRadius="5" Background="#333">
-                <Label Foreground="white" Content="Check"/>
+
+            <Border Grid.Row="2" Grid.Column="1" Margin="5 20 5 0" Height="80" CornerRadius="5" Background="#FFC5B2FF">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Foreground="Black" Content="Pending Work Orders"/>
+                    <Label Grid.Row="1" Foreground="Gray" Content="CRS:25%" FontSize="11"/>
+                </Grid>
+            </Border>
+
+            <Border Grid.Row="2" Grid.Column="2" Margin="5 20 5 0" Height="80" CornerRadius="5" Background="#FFFFD69D">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Foreground="Black" Content="Vehicles"/>
+                    <Label Grid.Row="1" Foreground="Gray" Content="CRS:25%" FontSize="11"/>
+                </Grid>
+            </Border>
+
+            <Border Grid.Row="2" Grid.Column="3" Margin="5 20 5 0" Height="80" CornerRadius="5" Background="#FFDED3FF">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Foreground="Black" Content="Drivers"/>
+                    <Label Grid.Row="1" Foreground="Gray" Content="CRS:25%" FontSize="11"/>
+                </Grid>
             </Border>
 
         </Grid>
