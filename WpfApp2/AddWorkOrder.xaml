@@ -26,7 +26,7 @@
                     <RowDefinition Height="80"/>
                     <RowDefinition Height="110"/>
                     <RowDefinition Height="auto"/>
-                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="250"/>
                     <RowDefinition Height="100"/>
                     <RowDefinition Height="100"/>
                     <RowDefinition Height="100"/>
@@ -39,7 +39,9 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-
+                
+                
+              
 
                 <!--Row 0-->
                 <TextBlock Grid.Row="0" Margin="15 40 0 0" VerticalAlignment="Top" Text="Package Details" Foreground="#374655" FontSize="18"/>
@@ -59,7 +61,7 @@
                 <Label Grid.Row="2" Grid.Column="0" Margin="15,39,0,0" VerticalAlignment="Top"  HorizontalAlignment="Left" Content="Pick-Up Point" Foreground="#97A5B4" Height="26" Width="82"/>
                 <ComboBox Grid.Row="2" Grid.Column="0" Margin="20,67,20,0" VerticalAlignment="Top" Text="" Height="35" Name="PickupPoint" SelectionChanged="PickupPoint_SelectionChanged"/>
                 <Label Grid.Row="2" Grid.Column="1" Margin="20,39,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Drop Point" Foreground="#97A5B4"  Height="26" Width="67"/>
-                <ComboBox Grid.Row="2" Grid.Column="1" Margin="25,66,25,0"  VerticalAlignment="Top" Height="35" Name="DropPoint" SelectionChanged="DropPoint_SelectionChanged"/>
+                <ComboBox Grid.Row="2" Grid.Column="1" Margin="25,66,25,0"  VerticalAlignment="Top" Height="35" Name="DropPoint" SelectionChanged="DropPoint_SelectionChanged" Background="#fff"/>
                 <Label Grid.Row="2" Grid.Column="2" Margin="20,39,0,0" HorizontalAlignment="Left"  Content="More Actions" Foreground="#97A5B4" VerticalAlignment="Top" Height="26" Width="80"/>
                 <Button Grid.Row="2" Grid.Column="2" Margin="25,66,0,0"  VerticalAlignment="Top" HorizontalAlignment="Left" Background="Transparent" Cursor="Hand" ToolTip="Refill Points"  Height="35" Width="35" Click="Page_Loaded">
                     <Image Source="pack://application:,,,/WpfApp2;component/Images/reload.png"/>
@@ -71,9 +73,13 @@
 
                 <!--Row 3-->
                 <TextBlock Grid.Row="3" Margin="15 15 0 0" VerticalAlignment="Top" Text="Available Routes" Foreground="#374655" FontSize="18"/>
-                <!--<Border  Height="auto" CornerRadius="5" Background="#EFF2F7">-->
-                <DataGrid Grid.Row="3" Grid.Column="0" Margin="20 50 25 0" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="dummydataGrid" Style="{DynamicResource DataGridStyle1}" AutoGenerateColumns="True" />
-                <!--</Border>-->
+                <DataGrid Grid.Row="3" Grid.ColumnSpan="2" Margin="20 50 25 0" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="dummydataGrid" Style="{DynamicResource DataGridStyle1}" IsReadOnly="True" Cursor="Hand" AutoGenerateColumns="True" />
+
+                <!--Row 4-->
+                <TextBlock Grid.Row="4" Margin="15 15 0 0" VerticalAlignment="Top" Text="Select Vehicle" Foreground="#374655" FontSize="18"/>
+                <DataGrid Grid.Row="4" Grid.ColumnSpan="2" Margin="20 50 25 0" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="dummytruckdataGrid" Style="{DynamicResource DataGridStyle1}" IsReadOnly="True" Cursor="Hand" AutoGenerateColumns="True" />
+                
+          
             </Grid>
         </Border>
 

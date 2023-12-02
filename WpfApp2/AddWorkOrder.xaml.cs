@@ -52,12 +52,32 @@ namespace WpfApp2
             dataTable.Rows.Add(2121211, "Bikaner-Delhi", "via - Panjab,Haryana");
             dataTable.Rows.Add(5411552, "Delhi-Karnatka", "via - Rajasthan,Gujrat");
             dataTable.Rows.Add(1541663, "Rajasthan-Goa", "via - Gujrat");
-            dataTable.Rows.Add(2121211, "Bikaner-Delhi", "via - Panjab,Haryana");
-            dataTable.Rows.Add(5411552, "Delhi-Karnatka", "via - Rajasthan,Gujrat");
-            dataTable.Rows.Add(1541663, "Rajasthan-Goa", "via - Gujrat");
 
             // Set the DataTable as the DataGrid's ItemsSource
             dummydataGrid.ItemsSource = dataTable.DefaultView;
+
+            DataTable truckdataTable = new DataTable("SampleData");
+            truckdataTable.Columns.Add("VehicleID", typeof(int));
+            truckdataTable.Columns.Add("Vehicle Type", typeof(string));
+            truckdataTable.Columns.Add("Vehicle Name", typeof(string));
+            truckdataTable.Columns.Add("Vehicle Capacity", typeof(string));
+
+            // Add some rows
+            truckdataTable.Rows.Add(2121211, "Load Body", "TATA", "5000 KG");
+            truckdataTable.Rows.Add(5411552, "Load Body", "Ashok LeyLand", "15000 KG");
+            truckdataTable.Rows.Add(1541663, "Load Body", "TATA", "5000 KG");
+            truckdataTable.Rows.Add(2121211, "Load Body", "TATA", "5000 KG");
+            truckdataTable.Rows.Add(5411552, "Load Body", "Ashok LeyLand", "15000 KG");
+            truckdataTable.Rows.Add(1541663, "Load Body", "TATA", "5000 KG");
+            truckdataTable.Rows.Add(2121211, "Load Body", "TATA", "5000 KG");
+            truckdataTable.Rows.Add(5411552, "Load Body", "Ashok LeyLand", "15000 KG");
+            truckdataTable.Rows.Add(1541663, "Load Body", "TATA", "5000 KG");
+            truckdataTable.Rows.Add(2121211, "Load Body", "TATA", "5000 KG");
+            truckdataTable.Rows.Add(5411552, "Load Body", "Ashok LeyLand", "15000 KG");
+            truckdataTable.Rows.Add(1541663, "Load Body", "TATA", "5000 KG");
+
+            // Set the DataTable as the DataGrid's ItemsSource
+            dummytruckdataGrid.ItemsSource = truckdataTable.DefaultView;
         }
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
