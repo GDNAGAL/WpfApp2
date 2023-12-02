@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -29,6 +30,7 @@ namespace WpfApp2
         public AddWorkOrder()
         {
             InitializeComponent();
+            LoadData();
 
             // Disable dates prior to today
             WorkOrderDatePicker.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1)));
@@ -36,6 +38,26 @@ namespace WpfApp2
             // Enable the next 30 days including today
             DateTime endDate = DateTime.Today.AddDays(29);
             WorkOrderDatePicker.DisplayDateEnd = endDate;
+        }
+
+        private void LoadData()
+        {
+            // Create a DataTable with static data
+            DataTable dataTable = new DataTable("SampleData");
+            dataTable.Columns.Add("RouteID", typeof(int));
+            dataTable.Columns.Add("Route Name", typeof(string));
+            dataTable.Columns.Add("Description", typeof(string));
+
+            // Add some rows
+            dataTable.Rows.Add(2121211, "Bikaner-Delhi", "via - Panjab,Haryana");
+            dataTable.Rows.Add(5411552, "Delhi-Karnatka", "via - Rajasthan,Gujrat");
+            dataTable.Rows.Add(1541663, "Rajasthan-Goa", "via - Gujrat");
+            dataTable.Rows.Add(2121211, "Bikaner-Delhi", "via - Panjab,Haryana");
+            dataTable.Rows.Add(5411552, "Delhi-Karnatka", "via - Rajasthan,Gujrat");
+            dataTable.Rows.Add(1541663, "Rajasthan-Goa", "via - Gujrat");
+
+            // Set the DataTable as the DataGrid's ItemsSource
+            dummydataGrid.ItemsSource = dataTable.DefaultView;
         }
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {

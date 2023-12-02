@@ -15,23 +15,23 @@
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
     </Window.Resources>
     <Grid>
-        <Border CornerRadius="7" Background="#ffffff" >
+        <Border CornerRadius="7" Background="#EFF2F7" >
             <Border.Effect>
                 <DropShadowEffect Direction="-130" BlurRadius="30" ShadowDepth="5" Opacity="0.1"/>
             </Border.Effect>
 
             <Grid Margin="20 0">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="140"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="110"/>
                     <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto" MinHeight="59"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
@@ -40,55 +40,40 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <!--Form Title-->
-                <StackPanel Orientation="Horizontal" Margin="4,6,9,1" Grid.RowSpan="2">
-                    <Border CornerRadius="50" BorderThickness="1.5" BorderBrush="#EFEFEF">
 
-                    </Border>
+                <!--Row 0-->
+                <TextBlock Grid.Row="0" Margin="15 40 0 0" VerticalAlignment="Top" Text="Package Details" Foreground="#374655" FontSize="18"/>
+                <Label Grid.Row="0" Grid.Column="0" Margin="15,69,0,0" VerticalAlignment="Top" Content="Work Order Date" Foreground="#97A5B4" HorizontalAlignment="Left"  Height="26" Width="100"/>
+                <DatePicker Grid.Row="0" Grid.Column="0" Margin="20,97,20,0" VerticalAlignment="Top" HorizontalAlignment="Stretch" Text=""  Name="WorkOrderDatePicker" Height="35" Background="#fff"/>
+                <uc:MyTextBox Grid.Row="0" Grid.Column="1" Margin="5,60,5,0" Caption="Package" />
+                <uc:MyTextBox Grid.Row="0" Grid.Column="2" Margin="5,60,5,0" Caption="Package" />
 
-                    <TextBlock Text="Package Details" Foreground="#374655" FontSize="18" Margin="15 0 0 0" VerticalAlignment="Center"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="4,102,9,10" Grid.Row="3" Grid.RowSpan="2">
-                    <Border CornerRadius="50" BorderThickness="1.5" BorderBrush="#EFEFEF">
+                <!--Row 1-->
+                <uc:MyTextBox Grid.Row="1"  Grid.Column="0" Margin="0,0,0,0" Caption="Package Description"/>
+                <uc:MyTextBox Grid.Row="1"  Grid.Column="1" Margin="5,0,5,0" Caption="Package Quantity"/>
+                <Label Grid.Row="1" Grid.Column="2" Margin="20,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Content="UNIT" Foreground="#97A5B4" Height="26" Width="82"/>
+                <ComboBox Grid.Row="1" Grid.Column="2" Margin="25,36,25,0" VerticalAlignment="Top" Text="" Height="35" Name="Unit" />
 
-                    </Border>
-
-                    <TextBlock Text="Route Details" Foreground="#374655" FontSize="18" Margin="15 0 0 0" VerticalAlignment="Center"/>
-                </StackPanel>
-
-                <!--Form Percentage-->
-                <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" Margin="0,14,20,41" Grid.Row="1" Width="0"/>
-
-                <Label Content="Work Order Date" Foreground="#97A5B4" HorizontalAlignment="Left" Margin="19,10,0,0" Grid.Row="2" Grid.Column="0" VerticalAlignment="Top" Height="26" Width="100"/>
-                <DatePicker Margin="22,36,22,0" Grid.Row="2"  Text="" Grid.Column="0" VerticalAlignment="Top" Name="WorkOrderDatePicker" Height="35"/>
-                <uc:MyTextBox Grid.Row="2" Caption="Package" Grid.Column="1" Margin="5 3 5 0" />
-                <uc:MyTextBox Grid.Row="2" Grid.Column="2" Caption="Package" Margin="5 3 5 0 "/>
-
-                <uc:MyTextBox Grid.Row="3" Grid.Column="0" Caption="Package Description" Margin="0,3,0,0"/>
-                <uc:MyTextBox Margin="5,3,5,0" Grid.Row="3"  Grid.Column="1" Caption="Package Quantity"/>
-                <Label Content="UNIT" Foreground="#97A5B4" HorizontalAlignment="Left" Margin="19,10,0,0" Grid.Row="3" Grid.Column="2" VerticalAlignment="Top" Height="26" Width="82"/>
-                <ComboBox Margin="22,36,22,0" Grid.Row="3"  Text="" Grid.Column="2" Height="35" VerticalAlignment="Top" Name="Unit" />
-
-                <Label Content="Pick-Up Point" Foreground="#97A5B4" HorizontalAlignment="Left" Margin="19,10,0,0" Grid.Row="5" Grid.Column="0" VerticalAlignment="Top" Height="26" Width="82"/>
-                <ComboBox Margin="22,36,22,0" Grid.Row="5"  Text="" Grid.Column="0" Height="35" VerticalAlignment="Top" Name="PickupPoint" SelectionChanged="PickupPoint_SelectionChanged">
-
-
-                </ComboBox>
-
-                <Label Content="Drop Point" Foreground="#97A5B4" HorizontalAlignment="Left" Margin="19,10,0,0" Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" Height="26" Width="67"/>
-                <ComboBox Margin="22,36,22,0" Grid.Row="5"  Text="" Grid.Column="1" Height="35" VerticalAlignment="Top" Name="DropPoint" SelectionChanged="DropPoint_SelectionChanged">
-
-                </ComboBox>
-
-                <Label Content="More Actions" Foreground="#97A5B4" HorizontalAlignment="Left" Margin="19,10,0,0" Grid.Row="5" Grid.Column="2" VerticalAlignment="Top" Height="26" Width="80"/>
-                <Button Background="Transparent" Cursor="Hand" ToolTip="Refill Points"  Grid.Column="2" HorizontalAlignment="Left" Height="35" Margin="22,36,0,0" Grid.Row="5" VerticalAlignment="Top" Width="35" Click="Page_Loaded">
+                <!--Row 2-->
+                <TextBlock Grid.Row="2" Margin="15 10 0 0" VerticalAlignment="Top" Text="Package Details" Foreground="#374655" FontSize="18"/>
+                <Label Grid.Row="2" Grid.Column="0" Margin="15,39,0,0" VerticalAlignment="Top"  HorizontalAlignment="Left" Content="Pick-Up Point" Foreground="#97A5B4" Height="26" Width="82"/>
+                <ComboBox Grid.Row="2" Grid.Column="0" Margin="20,67,20,0" VerticalAlignment="Top" Text="" Height="35" Name="PickupPoint" SelectionChanged="PickupPoint_SelectionChanged"/>
+                <Label Grid.Row="2" Grid.Column="1" Margin="20,39,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Drop Point" Foreground="#97A5B4"  Height="26" Width="67"/>
+                <ComboBox Grid.Row="2" Grid.Column="1" Margin="25,66,25,0"  VerticalAlignment="Top" Height="35" Name="DropPoint" SelectionChanged="DropPoint_SelectionChanged"/>
+                <Label Grid.Row="2" Grid.Column="2" Margin="20,39,0,0" HorizontalAlignment="Left"  Content="More Actions" Foreground="#97A5B4" VerticalAlignment="Top" Height="26" Width="80"/>
+                <Button Grid.Row="2" Grid.Column="2" Margin="25,66,0,0"  VerticalAlignment="Top" HorizontalAlignment="Left" Background="Transparent" Cursor="Hand" ToolTip="Refill Points"  Height="35" Width="35" Click="Page_Loaded">
                     <Image Source="pack://application:,,,/WpfApp2;component/Images/reload.png"/>
                 </Button>
-                <Button  Background="Transparent" Cursor="Hand" ToolTip="Add New Pikup or Drop Point"  Grid.Column="2" HorizontalAlignment="Left" Height="35" Margin="65,36,0,0" Grid.Row="5" VerticalAlignment="Top" Width="35" Click="AddDestination_Button_Click">
+                <Button  Grid.Row="2" Grid.Column="2" Margin="65,66,0,0"  VerticalAlignment="Top" HorizontalAlignment="Left"  Background="Transparent" Cursor="Hand" ToolTip="Add New Pikup or Drop Point" Width="35" Click="AddDestination_Button_Click">
                     <Image Source="pack://application:,,,/WpfApp2;component/Images/plus.png"/>
                 </Button>
-                <Button Content="Get Routes" ToolTip="Get Routes" Cursor="Hand" Grid.Row="5" Grid.Column="2" Width="100" HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Margin="107,36,0,0"/>
+                <Button Grid.Row="2" Grid.Column="2" Margin="105,66,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Get Routes" ToolTip="Get Routes" Cursor="Hand" Width="100" Height="35" />
 
+                <!--Row 3-->
+                <TextBlock Grid.Row="3" Margin="15 15 0 0" VerticalAlignment="Top" Text="Available Routes" Foreground="#374655" FontSize="18"/>
+                <!--<Border  Height="auto" CornerRadius="5" Background="#EFF2F7">-->
+                <DataGrid Grid.Row="3" Grid.Column="0" Margin="20 50 25 0" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="dummydataGrid" Style="{DynamicResource DataGridStyle1}" AutoGenerateColumns="True" />
+                <!--</Border>-->
             </Grid>
         </Border>
 
