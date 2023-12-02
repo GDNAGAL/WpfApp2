@@ -32,6 +32,7 @@ namespace WpfApp2
         {
             InitializeComponent();
             LoadData();
+            loadDestinations();
 
             // Disable dates prior to today
             WorkOrderDatePicker.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1)));
@@ -80,7 +81,7 @@ namespace WpfApp2
             // Set the DataTable as the DataGrid's ItemsSource
             dummytruckdataGrid.ItemsSource = truckdataTable.DefaultView;
         }
-        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        private async void loadDestinations()
         {
             
             using (HttpClient client = new HttpClient())
@@ -145,6 +146,18 @@ namespace WpfApp2
             }
         }
 
+        private void Get_Route_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if(((ComboBoxItem)PickupPoint.SelectedItem) != null && ((ComboBoxItem)DropPoint.SelectedItem) != null)
+            {
+                availableroutestack.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MessageBox.Show("Please Select Pickup and Drop Point", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
         private async void Get_Routes(object sender, RoutedEventArgs e)
         {
             if(((ComboBoxItem)PickupPoint.SelectedItem) != null && ((ComboBoxItem)DropPoint.SelectedItem) != null)
@@ -173,6 +186,7 @@ namespace WpfApp2
                                 
                             }
                             dummydataGrid.ItemsSource = dataTable.DefaultView;
+                            availableroutestack.Visibility = Visibility.Visible;
 
                         }
                     }
@@ -183,6 +197,11 @@ namespace WpfApp2
                 }
 
             }
+        }
+
+        private void Refresh_Destination_Button_Click(object sender, RoutedEventArgs e)
+        {
+            loadDestinations();
         }
     }
 }

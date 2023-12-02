@@ -8,8 +8,7 @@
         mc:Ignorable="d"
         Title="AddWorkOrder" Height="720" Width="1280"
         WindowState="Maximized"
-        ResizeMode="NoResize"
-        Loaded="Page_Loaded">
+        ResizeMode="NoResize">
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
@@ -26,12 +25,8 @@
                     <RowDefinition Height="80"/>
                     <RowDefinition Height="110"/>
                     <RowDefinition Height="auto"/>
-                    <RowDefinition Height="250"/>
-                    <RowDefinition Height="100"/>
-                    <RowDefinition Height="100"/>
-                    <RowDefinition Height="100"/>
-                    <RowDefinition Height="100"/>
-                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="280"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
@@ -63,7 +58,7 @@
                 <Label Grid.Row="2" Grid.Column="1" Margin="20,39,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Drop Point" Foreground="#97A5B4"  Height="26" Width="67"/>
                 <ComboBox Grid.Row="2" Grid.Column="1" Margin="25,66,25,0"  VerticalAlignment="Top" Height="35" Name="DropPoint" SelectionChanged="DropPoint_SelectionChanged" Background="#fff"/>
                 <Label Grid.Row="2" Grid.Column="2" Margin="20,39,0,0" HorizontalAlignment="Left"  Content="More Actions" Foreground="#97A5B4" VerticalAlignment="Top" Height="26" Width="80"/>
-                <Button Grid.Row="2" Grid.Column="2" Margin="25,66,0,0"  VerticalAlignment="Top" HorizontalAlignment="Left" Background="Transparent" Cursor="Hand" ToolTip="Refill Points"  Height="35" Width="35" Click="Page_Loaded">
+                <Button Grid.Row="2" Grid.Column="2" Margin="25,66,0,0"  VerticalAlignment="Top" HorizontalAlignment="Left" Background="Transparent" Cursor="Hand" ToolTip="Refill Points"  Height="35" Width="35" Click="Refresh_Destination_Button_Click" >
                     <Image Source="pack://application:,,,/WpfApp2;component/Images/reload.png"/>
                 </Button>
                 <Button  Grid.Row="2" Grid.Column="2" Margin="65,66,0,0"  VerticalAlignment="Top" HorizontalAlignment="Left"  Background="Transparent" Cursor="Hand" ToolTip="Add New Pikup or Drop Point" Width="35" Click="AddDestination_Button_Click">
@@ -72,13 +67,17 @@
                 <Button Grid.Row="2" Grid.Column="2" Margin="105,66,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Get Routes" ToolTip="Get Routes" Cursor="Hand" Width="100" Height="35" Click="Get_Routes" />
 
                 <!--Row 3-->
-                <TextBlock Grid.Row="3" Margin="15 15 0 0" VerticalAlignment="Top" Text="Available Routes" Foreground="#374655" FontSize="18"/>
-                <DataGrid Grid.Row="3" Grid.ColumnSpan="2" Margin="20 50 25 0" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="dummydataGrid" Style="{DynamicResource DataGridStyle1}" IsReadOnly="True" Cursor="Hand" AutoGenerateColumns="True" />
+                <StackPanel Grid.Row="3" Margin="15 15 0 0" Grid.ColumnSpan="2" Name="availableroutestack" Visibility="Hidden">
+                    <TextBlock VerticalAlignment="Top" Text="Available Routes" Foreground="#374655" FontSize="18"/>
+                    <DataGrid Margin="5 10 25 0" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="dummydataGrid" Style="{DynamicResource DataGridStyle1}" IsReadOnly="True" Cursor="Hand" AutoGenerateColumns="True" />
+                    <Button Grid.Row="3" Margin="0,0,-175,0" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Show Available Vehicle" ToolTip="Show Available Vehicle" Cursor="Hand" Width="150" Height="35" />
+                </StackPanel>
 
                 <!--Row 4-->
-                <TextBlock Grid.Row="4" Margin="15 15 0 0" VerticalAlignment="Top" Text="Select Vehicle" Foreground="#374655" FontSize="18"/>
-                <DataGrid Grid.Row="4" Grid.ColumnSpan="2" Margin="20 50 25 0" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="dummytruckdataGrid" Style="{DynamicResource DataGridStyle1}" IsReadOnly="True" Cursor="Hand" AutoGenerateColumns="True" />
-                
+                <StackPanel Grid.Row="4" Margin="15 15 0 0" Grid.ColumnSpan="2" Visibility="Hidden">
+                    <TextBlock  VerticalAlignment="Top" Text="Select Vehicle" Foreground="#374655" FontSize="18"/>
+                    <DataGrid Height="200" Margin="5 10 25 0" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="dummytruckdataGrid" Style="{DynamicResource DataGridStyle1}" IsReadOnly="True" Cursor="Hand" AutoGenerateColumns="True" />
+                </StackPanel>
           
             </Grid>
         </Border>

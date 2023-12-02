@@ -33,7 +33,7 @@
             <!--Page Title-->
             <TextBlock Text="Dashboard" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0" Foreground="#121518" HorizontalAlignment="Left"/>
 
-            <Border Grid.Row="2" Grid.Column="0" Margin="0 20 10 0" Height="80" CornerRadius="10" Background="#FE9496">
+            <Border Grid.Row="2" Grid.Column="0" Margin="0 20 10 0" Padding="5 0 0 0" Height="80" CornerRadius="10" Background="#FE9496">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
@@ -41,13 +41,13 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Foreground="White" Content="Total Work Orders" FontWeight="Bold"/>
-                    <Label Grid.Row="1" Foreground="White" Margin="0 -8 0 0" Content="CRS:25%" FontSize="10"/>
+                    <Label Grid.Row="0" Foreground="White" Content="Total Work Orders" FontWeight="Bold" FontSize="15"/>
+                    <Label Grid.Row="1" Foreground="White" Margin="0 -8 0 0" Content="1225" FontWeight="Bold" FontSize="32"/>
                     <Image Width="74" Grid.RowSpan="4" DockPanel.Dock="Top" HorizontalAlignment="Right" Margin="69,4,0,-2" Source="pack://application:,,,/WpfApp2;component/Images/pending_wo.png"/>
                 </Grid>
             </Border>
 
-            <Border Grid.Row="2" Grid.Column="1" Margin="10 20 10 0" Height="80" CornerRadius="10" Background="#9E58FF">
+            <Border Grid.Row="2" Grid.Column="1" Margin="10 20 10 0" Padding="5 0 0 0" Height="80" CornerRadius="10" Background="#9E58FF">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
@@ -55,14 +55,14 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Foreground="WHITE" Content="Pending Work Orders" FontWeight="Bold"/>
-                    <Label Grid.Row="1" Foreground="White" Margin="0 -8 0 0" Content="CRS:25%" FontSize="10"/>
+                    <Label Grid.Row="0" Foreground="WHITE" Content="Pending Work Orders" FontWeight="Bold" FontSize="15"/>
+                    <Label Grid.Row="1" Foreground="White" Margin="0 -8 0 0" Content="107" FontWeight="Bold" FontSize="32"/>
                     <Image Width="74" Grid.RowSpan="4" DockPanel.Dock="Top" HorizontalAlignment="Right" Margin="69,4,10,20" Source="pack://application:,,,/WpfApp2;component/Images/pending_wo1.png"/>
 
                 </Grid>
             </Border>
 
-            <Border Grid.Row="2" Grid.Column="2" Margin="10 20 0 0" Height="80" CornerRadius="10" Background="#1BCFB4">
+            <Border Grid.Row="2" Grid.Column="2" Margin="10 20 0 0" Padding="5 0 0 0" Height="80" CornerRadius="10" Background="#1BCFB4">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
@@ -70,9 +70,9 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Foreground="White" Content="Vehicles" FontWeight="Bold"/>
-                    <Label Grid.Row="1" Foreground="White" Margin="0 -8 0 0" Content="CRS:25%" FontSize="10"/>
-                    <Image Width="74" Grid.RowSpan="4" DockPanel.Dock="Top" HorizontalAlignment="Right" Margin="69,4,10,20" Source="pack://application:,,,/WpfApp2;component/Images/truck2.png"/>
+                    <Label Grid.Row="0" Foreground="White" Content="Vehicles" FontWeight="Bold" FontSize="15"/>
+                    <Label Grid.Row="1" Foreground="White" Margin="0 -8 0 0" Content="250" FontWeight="Bold" FontSize="32"/>
+                    <Image Width="74" Grid.RowSpan="4" DockPanel.Dock="Top" HorizontalAlignment="Right" Margin="69,-1,10,20" Source="pack://application:,,,/WpfApp2;component/Images/truck2.png"/>
 
                 </Grid>
             </Border>
