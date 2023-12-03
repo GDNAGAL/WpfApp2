@@ -16,6 +16,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Maps.MapControl.WPF;
 using System.Net.Http;
+using Newtonsoft.Json;
+using System.Collections.ObjectModel;
+using WpfApp2.Model;
 
 namespace WpfApp2
 {
@@ -24,38 +27,52 @@ namespace WpfApp2
     /// </summary>
     public partial class Routes : Page
     {
+        ObservableCollection<RoutesDetails> members = new ObservableCollection<RoutesDetails>();
+
         public Routes()
         {
             InitializeComponent();
             // Create dummy data
-            List<YourDataClass> dummyData = GenerateDummyData();
+            
 
             // Set dummy data as the ItemsSource for the DataGrid
-            myDataGrid.ItemsSource = dummyData;
-        }
-
-        public class YourDataClass
-        {
-            public string Name { get; set; }
-            public int Age { get; set; }
-            public string Email { get; set; }
-        }
-        private List<YourDataClass> GenerateDummyData()
-        {
-            List<YourDataClass> data = new List<YourDataClass>();
-
-            // Generate some dummy records
-            data.Add(new YourDataClass { Name = "John Doe", Age = 30, Email = "john@example.com" });
-            data.Add(new YourDataClass { Name = "Jane Smith", Age = 25, Email = "jane@example.com" });
-            data.Add(new YourDataClass { Name = "Alice Johnson", Age = 35, Email = "alice@example.com" });
-            // Add more dummy data as needed...
-
-            return data;
-        }
+            //myDataGrid.ItemsSource = dummyData;
+        }       
+       
         private void AddRoute_Click(object sender, RoutedEventArgs e)
         {
             AddRoute addRoute = new AddRoute();
             addRoute.ShowDialog();
+        }
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            //var converter = new BrushConverter();
+            //string[] color = { "#1098AD", "#1E88E5", "#FF8F00", "#FF5252", "#0CA678", "#6741D9", "#FF6D00", "#FF5252", "#1E88E5", "#0CA678" };
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    var respons = await client.GetAsync("https://localhost:7082/api/RouteDetailsManage/GetAllRouteDetails");
+                    respons.EnsureSuccessStatusCode();
+                    if (respons.IsSuccessStatusCode)
+                    {
+                        var jsonString = await respons.Content.ReadAsStringAsync();
+                        members = JsonConvert.DeserializeObject<ObservableCollection<RoutesDetails>>(jsonString);
+                        
+                        
+                        myDataGrid.ItemsSource = members;
+
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Server Error Code{respons.StatusCode}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"{ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
         }
     }
     

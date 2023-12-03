@@ -25,6 +25,7 @@ namespace WpfApp2
     /// </summary>
     public partial class AddWorkOrder : Window
     {
+        private readonly TimeZoneInfo INDIAN_ZONE = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
         ObservableCollection<DestinationDetails> members = new ObservableCollection<DestinationDetails>();
         ObservableCollection<RoutesDetails> routes = new ObservableCollection<RoutesDetails>();
         ObservableCollection<VehicleDetails> vehicles = new ObservableCollection<VehicleDetails>();
@@ -41,6 +42,9 @@ namespace WpfApp2
             // Enable the next 30 days including today
             DateTime endDate = DateTime.Today.AddDays(29);
             WorkOrderDatePicker.DisplayDateEnd = endDate;
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Content = "unit 1";
+            Unit.Items.Add(item1);
         }
 
         //private void LoadData()
@@ -115,10 +119,7 @@ namespace WpfApp2
                 catch(Exception ex)
                 {
                     MessageBox.Show($"{ex.Message}","Error",MessageBoxButton.OK,MessageBoxImage.Error);
-                }
-
-                
-                
+                }                    
             }
         }
         private void AddDestination_Button_Click(object sender, RoutedEventArgs e)
@@ -246,6 +247,20 @@ namespace WpfApp2
         private void Refresh_Destination_Button_Click(object sender, RoutedEventArgs e)
         {
             loadDestinations();
+        }
+        private void CreateOrder(object sender, RoutedEventArgs e)
+        {
+            WorkOrder workOrder = new WorkOrder();
+            workOrder.Date= TimeZoneInfo.ConvertTimeFromUtc(Convert.ToDateTime(WorkOrderDatePicker.Text), INDIAN_ZONE);
+            workOrder.Package = Package.TextValue;
+            workOrder.TypeOfPackage = Convert.ToInt32(PackageType.TextValue);
+            workOrder.Quantity = Convert.ToInt32(Quantity.TextValue);
+            if (((ComboBoxItem)Unit.SelectedItem) != null)
+            {
+                workOrder.Unit= ((ComboBoxItem)Unit.SelectedItem).Content.ToString();
+            }
+
+
         }
     }
 }

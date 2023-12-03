@@ -65,6 +65,8 @@ namespace WpfApp2
         private void Routes_Click(object sender, RoutedEventArgs e)
         {
             LftRender.Content = new Routes();
+            //AddRoute route = new AddRoute();
+            //route.ShowDialog();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
