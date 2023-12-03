@@ -75,7 +75,7 @@
                 <StackPanel Grid.Row="4" Margin="15 15 0 0" Grid.ColumnSpan="2" Visibility="Hidden" Name="availablevehicle">
                     <TextBlock  VerticalAlignment="Top" Text="Select Vehicle" Foreground="#374655" FontSize="18"/>
                     <DataGrid Height="200" Margin="5 10 25 0" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="dummytruckdataGrid" Style="{DynamicResource DataGridStyle1}" IsReadOnly="True" Cursor="Hand" AutoGenerateColumns="True" />
-                    <Button Name="CreateOrder"  Grid.Row="4" Margin="0,0,-10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Create Order" ToolTip="Create Order" Cursor="Hand" Width="150" Height="35"/>
+                    <Button  Grid.Row="4" Margin="0,0,-10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Create Order" ToolTip="Create Order" Cursor="Hand" Width="150" Height="35"/>
                 </StackPanel>
           
             </Grid>

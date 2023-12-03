@@ -5,12 +5,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApp2"
       xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
       HorizontalAlignment="Stretch"
       Title="Dashboard" Background="#EFF2F7">
 
     <Page.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
     </Page.Resources>
+
 
     <Border CornerRadius="0" Background="#EFF2F7">
         <Grid Grid.Column="1">
@@ -76,6 +78,39 @@
 
                 </Grid>
             </Border>
+
+            <Border Grid.Row="3" Grid.ColumnSpan="2" Margin="10 50 0 0" Height="300" Padding="5 0 0 0" CornerRadius="10" >
+                <syncfusion:SfChart DataContext="{Binding RelativeSource={RelativeSource AncestorType=local:Dashboard}}">
+                    <syncfusion:SfChart.PrimaryAxis>
+                        <syncfusion:CategoryAxis Header="Columns" />
+                    </syncfusion:SfChart.PrimaryAxis>
+
+                    <syncfusion:SfChart.SecondaryAxis>
+                        <syncfusion:NumericalAxis Header="Quantity" />
+                    </syncfusion:SfChart.SecondaryAxis>
+
+                    <syncfusion:ColumnSeries ItemsSource="{Binding Data}" XBindingPath="Name" YBindingPath="Height">
+                    </syncfusion:ColumnSeries>
+                </syncfusion:SfChart>
+            </Border>
+
+            <!--<Border Grid.Row="3" Grid.Column="3" Margin="10 50 0 0" Height="300" Padding="5 0 0 0" CornerRadius="10" >
+                <syncfusion:PieSeries x:Name="PieSeries" StartAngle="180" EndAngle="360"    
+
+                    XBindingPath="Name" 
+
+                    YBindingPath="Height"
+
+                    ItemsSource="{Binding Data}"/>
+            </Border>-->
+
+
+
+            <StackPanel Grid.Row="4" Margin="15 15 0 0" Grid.ColumnSpan="3">
+                <TextBlock VerticalAlignment="Top" Text="Latest Shipments" HorizontalAlignment="left" Margin="20 0 0 0" Foreground="#374655" FontSize="18"/>
+                <DataGrid Margin="20 10 25 0" x:Name="myDataGrid" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" Style="{DynamicResource DataGridStyle1}" IsReadOnly="True" Cursor="Hand" AutoGenerateColumns="True" />
+            </StackPanel>
+
         </Grid>
     </Border>
 </Page>

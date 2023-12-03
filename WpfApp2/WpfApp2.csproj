@@ -26,6 +26,7 @@
     <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.11.0" />
     <PackageReference Include="Microsoft.Maps.MapControl.WPF" Version="1.0.0.3" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Syncfusion.SfChart.WPF" Version="23.2.6" />
   </ItemGroup>
 
   <ItemGroup>
