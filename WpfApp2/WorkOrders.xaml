@@ -5,151 +5,125 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
       Background="Transparent"
-      xmlns:local="clr-namespace:WpfApp2" 
+      xmlns:local="clr-namespace:WpfApp2"
+      HorizontalAlignment="Left"
       Title="Work Orders">
+
 
     <Page.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
     </Page.Resources>
+    <Grid>
+        <Border CornerRadius="0" Background="#EFF2F7">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
 
-    <Border CornerRadius="0" Background="#EFF2F7">
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="auto"/>
-            </Grid.RowDefinitions>
 
-            <!--Search Textbox-->
-            <Grid Width="300" HorizontalAlignment="Left">
+
+                <!--Search Textbox-->
+                <Grid Width="300" HorizontalAlignment="Left">
                     <TextBlock Margin="20 0" VerticalAlignment="Center" Foreground="#B0B9C6" IsHitTestVisible="False"
                            Panel.ZIndex="1" Text="Search here ..."
                            Visibility="{Binding ElementName=textBoxSearch, Path=Text.Length, Converter={StaticResource BoolToVis}}" />
 
-                    <TextBox Name="textBoxSearch" Style="{StaticResource searchTextbox}"/>
+                    <TextBox Name="textBoxSearch" Style="{StaticResource searchTextbox}" />
 
                     <Icon:PackIconMaterial Kind="Magnify" Width="15" Height="15" VerticalAlignment="Center" Margin="0 0 15 0" Foreground="#B0B9C6" HorizontalAlignment="Right" />
                 </Grid>
 
-            <!--Top Buttons-->
-            <Button Style="{StaticResource topButton}" Margin="0 0 20 0" Background="#dcdcdc">
-                <Icon:PackIconMaterial Kind="Cog"/>
-            </Button>
+                <!--Page Title-->
+                <TextBlock Text="Work Orders" Grid.Row="1" Grid.Column="0" Width="auto" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0" Foreground="#121518" HorizontalAlignment="Left"/>
 
-            <Button Style="{StaticResource topButton}" Margin="0 0 55 0">
-                <Icon:PackIconMaterial Kind="Bell"/>
-            </Button>
+                <!--Add Button-->
+                <Button Style="{StaticResource addButton}" Grid.Column="1" HorizontalAlignment="Right" Click="addworkorder_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
+                        <TextBlock Text="Add Work Order"/>
+                    </StackPanel>
+                </Button>
 
-            <!--Page Title-->
-            <TextBlock Text="Work Orders" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0" Foreground="#121518" HorizontalAlignment="Left"/>
+                <!--Seprator-->
+                <Separator Height="1" Grid.Row="2" Grid.ColumnSpan="2" Width="auto" Background="#FFC3CAD1" Margin="0 10 0 10"/>
 
-            <!--Add Button-->
-            <Button Style="{StaticResource addButton}" Click="addworkorder_Click">
-                <StackPanel Orientation="Horizontal">
-                    <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
-                    <TextBlock Text="Add Work Order"/>
-                </StackPanel>
-            </Button>
+                <!--map and routes-->
+                <Border Grid.Row="3" Grid.Column="0" CornerRadius="10" BorderThickness="1" BorderBrush="White" Height="auto" Width="auto" Margin="0 10 0 0" >
+                    <WebBrowser Source="https://www.bing.com/maps"  Height="400" Width="600" Margin="0 10 0 0" />
+                </Border>
 
-            <!--Seprator-->
-            <Separator Height="1" Grid.Row="3" Background="#DAE2EA" Margin="0 10 0 10"/>
-
-            <!--Tab buttons-->
-            <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 10 0 0">
-                    <Button Style="{StaticResource tabButton}" Content="All" BorderBrush="#784FF2"/>
-                    <Button Style="{StaticResource tabButton}" Content="Completed" Margin="0 0 15 0"/>
-                    <Button Style="{StaticResource tabButton}" Content="Upcoming"/>
+                <StackPanel Grid.Row="3" Margin="15 15 0 0" Grid.Column="1">
+                    <TextBlock VerticalAlignment="Top" Text="Current Work Order" Margin="20 0 0 0" Foreground="#374655" FontSize="18"/>
+                    <DataGrid Margin="20 10 25 0" x:Name="myDataGrid" Width="500" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" Style="{DynamicResource DataGridStyle1}" IsReadOnly="True" Cursor="Hand" AutoGenerateColumns="True" />
                 </StackPanel>
 
-            <!--Counter Title-->
-            <!--<TextBlock Text="Total drivers" Grid.Row="4" FontSize="18" FontWeight="SemiBold" Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Center"/>-->
+                <!--Seprator-->
+                <Separator Height="1" Grid.Row="4" Grid.ColumnSpan="2" Width="auto" Background="#FFC3CAD1" Margin="0 20 0 10"/>
+                
+                <!--Previous order datagrid-->
+                <!--<StackPanel Grid.Row="5" Margin="15 15 0 0" Grid.ColumnSpan="2">
+                    <TextBlock VerticalAlignment="Top" Text="Available Routes" Margin="20 0 0 0" Foreground="#374655" FontSize="18"/>
+                    <DataGrid Margin="20 10 25 0"  Width="500" x:Name="myDataGrid" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" Style="{DynamicResource DataGridStyle1}" IsReadOnly="True" Cursor="Hand" AutoGenerateColumns="True" />
+                </StackPanel>-->
+                <StackPanel Grid.Row="5" Margin="15 15 0 0" Grid.ColumnSpan="2">
+                    <TextBlock VerticalAlignment="Top" Text="Previous Work Orders" Margin="20 0 0 0" Foreground="#374655" FontSize="18"/>
+                    <DataGrid Grid.Row="5" Grid.RowSpan="2" Grid.ColumnSpan="2" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyle1}">
+                        <DataGrid.Columns>
+                            <DataGridCheckBoxColumn Header="C" CanUserResize="False" Width="auto" ElementStyle="{StaticResource CheckBoxStyle1}">
+                                <DataGridCheckBoxColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <CheckBox Style="{StaticResource CheckBoxStyle1}"/>
+                                    </DataTemplate>
+                                </DataGridCheckBoxColumn.HeaderTemplate>
+                            </DataGridCheckBoxColumn>
+                            <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Number}"/>
+                            <DataGridTemplateColumn Header="Member" IsReadOnly="True" Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Border Width="25" Height="25" CornerRadius="50" Margin="0 0 10 0" Background="{Binding BgColor}">
+                                                <TextBlock Text="{Binding Character}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Margin="0 0 0 1"/>
+                                            </Border>
 
-            <!--<TextBlock Text="Filter by" Grid.Row="4" FontSize="13" FontWeight="SemiBold" Margin="0 0 215 0" Foreground="#121518" HorizontalAlignment="Right" VerticalAlignment="Center"/>-->
-
-            <!--Filter Textbox-->
-            <!--<Grid Width="200" HorizontalAlignment="Right" Grid.Row="4">
-                <TextBlock Margin="15 0" VerticalAlignment="Center" Foreground="#B0B9C6" IsHitTestVisible="False"
-                           Panel.ZIndex="1" Text="Search in Members ..."
-                           Visibility="{Binding ElementName=textBoxFilter, Path=Text.Length, Converter={StaticResource BoolToVis}}" />
-
-                <TextBox Name="textBoxFilter" Style="{StaticResource filterTextBox}"/>
-            </Grid>-->
-
-
-
-            <!--Members Data Grid-->
-            <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyle1}" Margin="10,10,-10,60" Grid.Row="5" Grid.RowSpan="2">
-                <DataGrid.Columns>
-                    <DataGridCheckBoxColumn Header="C" CanUserResize="False" Width="auto" ElementStyle="{StaticResource CheckBoxStyle1}">
-                        <DataGridCheckBoxColumn.HeaderTemplate>
-                            <DataTemplate>
-                                <CheckBox Style="{StaticResource CheckBoxStyle1}"/>
-                            </DataTemplate>
-                        </DataGridCheckBoxColumn.HeaderTemplate>
-                    </DataGridCheckBoxColumn>
-                    <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Number}"/>
-                    <DataGridTemplateColumn Header="Member" IsReadOnly="True" Width="*">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <Border Width="25" Height="25" CornerRadius="50" Margin="0 0 10 0" Background="{Binding BgColor}">
-                                        <TextBlock Text="{Binding Character}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Margin="0 0 0 1"/>
-                                    </Border>
-
-                                    <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTextColumn Header="Position" Binding="{Binding Position}" IsReadOnly="True" Width="*"/>
-                    <DataGridTextColumn Header="Email Address" Binding="{Binding Email}" IsReadOnly="True" Width="*"/>
-                    <DataGridTextColumn Header="Phone Number" Binding="{Binding Phone}" IsReadOnly="True" Width="*"/>
-                    <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <Button Style="{StaticResource gridEditButton}">
-                                        <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
-                                    </Button>
-                                    <Button Margin="5 0 0 0" Style="{StaticResource gridRemoveButton}">
-                                        <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
-                                    </Button>
-                                </StackPanel>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
-
-            <!--Pagingation Section-->
-            <Border Grid.Row="6" HorizontalAlignment="Right" BorderBrush="#DEE4EC" BorderThickness="1" CornerRadius="5" Padding="5" Background="#ffffff" Margin="0 10 10 10">
-                <StackPanel Orientation="Horizontal">
-                    <Button Style="{StaticResource pagingButton}">
-                        <Icon:PackIconMaterial Kind="ChevronLeft" Style="{StaticResource pagingButtonIcon}"/>
-                    </Button>
-                    <Rectangle Width="1" Fill="#DEE4EC" Margin="3 7"/>
-
-                    <Button Style="{StaticResource pagingButton}" Content="1" Background="#7950F2" Foreground="#ffffff"/>
-                    <Button Style="{StaticResource pagingButton}" Content="2" />
-                    <Button Style="{StaticResource pagingButton}" Content="3"/>
-
-                    <TextBlock Text="..." Foreground="#6C7682" VerticalAlignment="Center" Margin="10 0" FontSize="15"/>
-
-                    <Button Style="{StaticResource pagingButton}" Content="7"/>
-                    <Button Style="{StaticResource pagingButton}" Content="8"/>
-                    <Button Style="{StaticResource pagingButton}" Content="9"/>
-
-                    <Rectangle Width="1" Fill="#DEE4EC" Margin="3 7"/>
-                    <Button Style="{StaticResource pagingButton}">
-                        <Icon:PackIconMaterial Kind="ChevronRight" Style="{StaticResource pagingButtonIcon}"/>
-                    </Button>
+                                            <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Header="Position" Binding="{Binding Position}" IsReadOnly="True" Width="*"/>
+                            <DataGridTextColumn Header="Email Address" Binding="{Binding Email}" IsReadOnly="True" Width="*"/>
+                            <DataGridTextColumn Header="Phone Number" Binding="{Binding Phone}" IsReadOnly="True" Width="*"/>
+                            <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button Style="{StaticResource gridEditButton}">
+                                                <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
+                                            </Button>
+                                            <Button Margin="5 0 0 0" Style="{StaticResource gridRemoveButton}">
+                                                <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
+                                            </Button>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </StackPanel>
-            </Border>
 
-        </Grid>
-    </Border>
+
+            </Grid>
+        </Border>
+    </Grid>
 </Page>

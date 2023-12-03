@@ -58,8 +58,9 @@
                 <Separator Height="1" Grid.Row="2" Grid.ColumnSpan="2" Width="auto" Background="#DAE2EA" Margin="0 10 0 10"/>
 
                 <!--map and routes-->
-                <WebBrowser Grid.Row="3" Grid.Column="0" Source="https://www.google.com" Height="400" Width="600" Margin="0 10 0 0"/>
-
+                <Border Grid.Row="3" Grid.Column="0" CornerRadius="10" BorderThickness="1" BorderBrush="White" Height="auto" Width="auto" Margin="0 10 0 0" >
+                    <WebBrowser Source="https://www.bing.com/maps"  Height="400" Width="600" Margin="0 10 0 0" />
+                </Border>
                 <StackPanel Grid.Row="3" Margin="15 15 0 0" Grid.Column="1">
                     <TextBlock VerticalAlignment="Top" Text="Available Routes" Margin="20 0 0 0" Foreground="#374655" FontSize="18"/>
                     <DataGrid Margin="20 10 25 0" x:Name="myDataGrid" Width="500" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" Style="{DynamicResource DataGridStyle1}" IsReadOnly="True" Cursor="Hand" AutoGenerateColumns="True" />
