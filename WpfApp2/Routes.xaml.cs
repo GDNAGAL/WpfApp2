@@ -24,41 +24,38 @@ namespace WpfApp2
     /// </summary>
     public partial class Routes : Page
     {
-        private readonly HttpClient _httpClient;
         public Routes()
         {
             InitializeComponent();
-            _httpClient = new HttpClient();
-            ShowMap();
+            // Create dummy data
+            List<YourDataClass> dummyData = GenerateDummyData();
+
+            // Set dummy data as the ItemsSource for the DataGrid
+            myDataGrid.ItemsSource = dummyData;
         }
-        private async void ShowMap()
+
+        public class YourDataClass
         {
-            try
-            {
-                string bingMapsKey = "FqPVzbC12lz0XsfWFJ7G~tEGUro4BW1iB5iiyvgDqgA~AhRJ26UqNyj6WWKjAvmJD42KAZxc03K_DMwN-_nx8N5V1ZHN-wvqrxujRzz5ZU5z";
-                string mapArea = "47.5151,-122.1774,47.6723,-121.2853"; // Latitude, Longitude, Zoom Level
-                string imageUrl = $"https://dev.virtualearth.net/REST/v1/Imagery/Map/Road?mapArea={mapArea}&key={bingMapsKey}";
-                HttpResponseMessage response = await _httpClient.GetAsync(imageUrl);
+            public string Name { get; set; }
+            public int Age { get; set; }
+            public string Email { get; set; }
+        }
+        private List<YourDataClass> GenerateDummyData()
+        {
+            List<YourDataClass> data = new List<YourDataClass>();
 
-                if (response.IsSuccessStatusCode)
-                {
-                    byte[] imageBytes = await response.Content.ReadAsByteArrayAsync();
-                    BitmapImage bitmap = new BitmapImage();
-                    bitmap.BeginInit();
-                    bitmap.StreamSource = new System.IO.MemoryStream(imageBytes);
-                    bitmap.EndInit();
+            // Generate some dummy records
+            data.Add(new YourDataClass { Name = "John Doe", Age = 30, Email = "john@example.com" });
+            data.Add(new YourDataClass { Name = "Jane Smith", Age = 25, Email = "jane@example.com" });
+            data.Add(new YourDataClass { Name = "Alice Johnson", Age = 35, Email = "alice@example.com" });
+            // Add more dummy data as needed...
 
-                    mapImage.Source = bitmap;
-                }
-                else
-                {
-                    MessageBox.Show("Error downloading map image: " + response.ReasonPhrase);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loading map: " + ex.Message);
-            }
+            return data;
+        }
+        private void AddRoute_Click(object sender, RoutedEventArgs e)
+        {
+            AddRoute addRoute = new AddRoute();
+            addRoute.ShowDialog();
         }
     }
     

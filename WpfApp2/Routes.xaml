@@ -3,13 +3,74 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      Background="Transparent"
       xmlns:local="clr-namespace:WpfApp2"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      HorizontalAlignment="Left"
       Title="Routes">
 
+
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </Page.Resources>
     <Grid>
-        <Image x:Name="mapImage" />
-        <WebBrowser/>
+        <Border CornerRadius="0" Background="#EFF2F7">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+
+
+                <!--Search Textbox-->
+                <Grid Width="300" HorizontalAlignment="Left">
+                    <TextBlock Margin="20 0" VerticalAlignment="Center" Foreground="#B0B9C6" IsHitTestVisible="False"
+                           Panel.ZIndex="1" Text="Search here ..."
+                           Visibility="{Binding ElementName=textBoxSearch, Path=Text.Length, Converter={StaticResource BoolToVis}}" />
+
+                    <TextBox Name="textBoxSearch" Style="{StaticResource searchTextbox}" />
+
+                    <Icon:PackIconMaterial Kind="Magnify" Width="15" Height="15" VerticalAlignment="Center" Margin="0 0 15 0" Foreground="#B0B9C6" HorizontalAlignment="Right" />
+                </Grid>
+
+                <!--Page Title-->
+                <TextBlock Text="Routes" Grid.Row="1" Grid.Column="0" Width="auto" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0" Foreground="#121518" HorizontalAlignment="Left"/>
+
+                <!--Add Button-->
+                <Button Style="{StaticResource addButton}" Grid.Column="1" HorizontalAlignment="Right" Click="AddRoute_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
+                        <TextBlock Text="Add New Driver"/>
+                    </StackPanel>
+                </Button>
+
+                <!--Seprator-->
+                <Separator Height="1" Grid.Row="2" Grid.ColumnSpan="2" Width="auto" Background="#DAE2EA" Margin="0 10 0 10"/>
+
+                <!--map and routes-->
+                <WebBrowser Grid.Row="3" Grid.Column="0" Source="https://www.google.com" Height="400" Width="600" Margin="0 10 0 0"/>
+
+                <StackPanel Grid.Row="3" Margin="15 15 0 0" Grid.Column="1">
+                    <TextBlock VerticalAlignment="Top" Text="Available Routes" Margin="20 0 0 0" Foreground="#374655" FontSize="18"/>
+                    <DataGrid Margin="20 10 25 0" x:Name="myDataGrid" Width="500" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" Style="{DynamicResource DataGridStyle1}" IsReadOnly="True" Cursor="Hand" AutoGenerateColumns="True" />
+                </StackPanel>
+
+                <!--Seprator-->
+                <Separator Height="1" Grid.Row="4" Grid.ColumnSpan="2" Width="auto" Background="#DAE2EA" Margin="0 20 0 10"/>
+
+
+            </Grid>
+        </Border>
     </Grid>
 </Page>
