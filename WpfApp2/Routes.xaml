@@ -66,9 +66,6 @@
                     <DataGrid Margin="20 10 25 0" x:Name="myDataGrid" Width="500" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" Style="{DynamicResource DataGridStyle1}" IsReadOnly="True" Cursor="Hand" AutoGenerateColumns="True" />
                 </StackPanel>
 
-                <!--Seprator-->
-                <Separator Height="1" Grid.Row="4" Grid.ColumnSpan="2" Width="auto" Background="#DAE2EA" Margin="0 20 0 10"/>
-
 
             </Grid>
         </Border>

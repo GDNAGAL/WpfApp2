@@ -40,7 +40,7 @@
 
                     </Border>
 
-                    <TextBlock Text="Add new driver" Foreground="#374655" FontSize="18" Margin="15 0 0 0" VerticalAlignment="Center"/>
+                    <TextBlock Text="Add new route" Foreground="#374655" FontSize="18" Margin="15 0 0 0" VerticalAlignment="Center"/>
                 </StackPanel>
 
                 <!--Form Percentage-->

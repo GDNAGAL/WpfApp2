@@ -77,12 +77,12 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButton}">
+                            <!--<Button Style="{StaticResource menuButton}">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="ForumOutline" Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Destinations"/>
                                 </StackPanel>
-                            </Button>
+                            </Button>-->
 
                         </StackPanel>
 

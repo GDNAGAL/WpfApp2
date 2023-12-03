@@ -112,8 +112,8 @@
                     </Button>
                     <Rectangle Width="1" Fill="#DEE4EC" Margin="3 7"/>
 
-                    <Button Style="{StaticResource pagingButton}" Content="1"/>
-                    <Button Style="{StaticResource pagingButton}" Content="2" Background="#7950F2" Foreground="#ffffff"/>
+                        <Button Style="{StaticResource pagingButton}" Content="1" Background="#7950F2" Foreground="#ffffff"/>
+                    <Button Style="{StaticResource pagingButton}" Content="2"/>
                     <Button Style="{StaticResource pagingButton}" Content="3"/>
 
                     <TextBlock Text="..." Foreground="#6C7682" VerticalAlignment="Center" Margin="10 0" FontSize="15"/>
