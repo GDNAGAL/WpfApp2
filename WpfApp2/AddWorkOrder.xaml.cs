@@ -34,7 +34,6 @@ namespace WpfApp2
         public AddWorkOrder()
         {
             InitializeComponent();
-            //LoadData();
             loadDestinations();
 
             recomm.Add(new Recomman { RouteID = "1", Vehicle = "RJ07UA5258", Driver = "Pawan", Summary = "NH 44", Distance = "200 KM" });
@@ -49,50 +48,8 @@ namespace WpfApp2
             // Enable the next 30 days including today
             DateTime endDate = DateTime.Today.AddDays(29);
             WorkOrderDatePicker.DisplayDateEnd = endDate;
-            ComboBoxItem item1 = new ComboBoxItem();
-            item1.Content = "unit 1";
-            Unit.Items.Add(item1);
         }
 
-        //private void LoadData()
-        //{
-            // Create a DataTable with static data
-            //DataTable dataTable = new DataTable("SampleData");
-            //dataTable.Columns.Add("RouteID", typeof(int));
-            //dataTable.Columns.Add("Route Name", typeof(string));
-            //dataTable.Columns.Add("Description", typeof(string));
-
-            //// Add some rows
-            //dataTable.Rows.Add(2121211, "Bikaner-Delhi", "via - Panjab,Haryana");
-            //dataTable.Rows.Add(5411552, "Delhi-Karnatka", "via - Rajasthan,Gujrat");
-            //dataTable.Rows.Add(1541663, "Rajasthan-Goa", "via - Gujrat");
-
-            //// Set the DataTable as the DataGrid's ItemsSource
-            //dummydataGrid.ItemsSource = dataTable.DefaultView;
-
-            //DataTable truckdataTable = new DataTable("SampleData");
-            //truckdataTable.Columns.Add("VehicleID", typeof(int));
-            //truckdataTable.Columns.Add("Vehicle Type", typeof(string));
-            //truckdataTable.Columns.Add("Vehicle Name", typeof(string));
-            //truckdataTable.Columns.Add("Vehicle Capacity", typeof(string));
-
-            // Add some rows
-            //truckdataTable.Rows.Add(2121211, "Load Body", "TATA", "5000 KG");
-            //truckdataTable.Rows.Add(5411552, "Load Body", "Ashok LeyLand", "15000 KG");
-            //truckdataTable.Rows.Add(1541663, "Load Body", "TATA", "5000 KG");
-            //truckdataTable.Rows.Add(2121211, "Load Body", "TATA", "5000 KG");
-            //truckdataTable.Rows.Add(5411552, "Load Body", "Ashok LeyLand", "15000 KG");
-            //truckdataTable.Rows.Add(1541663, "Load Body", "TATA", "5000 KG");
-            //truckdataTable.Rows.Add(2121211, "Load Body", "TATA", "5000 KG");
-            //truckdataTable.Rows.Add(5411552, "Load Body", "Ashok LeyLand", "15000 KG");
-            //truckdataTable.Rows.Add(1541663, "Load Body", "TATA", "5000 KG");
-            //truckdataTable.Rows.Add(2121211, "Load Body", "TATA", "5000 KG");
-            //truckdataTable.Rows.Add(5411552, "Load Body", "Ashok LeyLand", "15000 KG");
-            //truckdataTable.Rows.Add(1541663, "Load Body", "TATA", "5000 KG");
-
-            //// Set the DataTable as the DataGrid's ItemsSource
-            //dummytruckdataGrid.ItemsSource = truckdataTable.DefaultView;
-        //}
         private async void loadDestinations()
         {   
             
@@ -132,9 +89,17 @@ namespace WpfApp2
         private void AddDestination_Button_Click(object sender, RoutedEventArgs e)
         {
             AddDestination add_destination = new AddDestination();
+            add_destination.Closed += addDestinationDialog_Closed;
             add_destination.ShowDialog();
         }
+        private void addDestinationDialog_Closed(object sender, EventArgs e)
+        {
+            // The dialog is closed and Destination Refreshed
+            //MessageBox.Show("Dialog is closed.");
 
+            loadDestinations();
+
+        }
         private void PickupPoint_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
      
@@ -168,16 +133,11 @@ namespace WpfApp2
         }
 
        
-        private void Refresh_Destination_Button_Click(object sender, RoutedEventArgs e)
-        {
-            loadDestinations();
-        }
         private void CreateOrder(object sender, RoutedEventArgs e)
         {
             WorkOrder workOrder = new WorkOrder();
             workOrder.Date= TimeZoneInfo.ConvertTimeFromUtc(Convert.ToDateTime(WorkOrderDatePicker.Text), INDIAN_ZONE);
             workOrder.Package = Package.TextValue;
-            workOrder.TypeOfPackage = Convert.ToInt32(PackageType.TextValue);
             workOrder.Quantity = Convert.ToInt32(Quantity.TextValue);
             if (((ComboBoxItem)Unit.SelectedItem) != null)
             {
@@ -187,16 +147,6 @@ namespace WpfApp2
 
         }
 
-        private void OpenModify(object sender, RoutedEventArgs e)
-        {
-            AddRoute myDialog = new AddRoute();
-            myDialog.Closed += MyDialog_Closed;
-            myDialog.Show();
-        }
-        private void MyDialog_Closed(object sender, EventArgs e)
-        {
-            // The dialog is closed
-            MessageBox.Show("Dialog is closed.");
-        }
+        
     }
 }

@@ -38,7 +38,7 @@ namespace WpfApp2
             request.Content = content;
             var response = await client.SendAsync(request);
             Console.WriteLine(response.Content);
-            this.Hide();
+            this.Close();
             MessageBox.Show("Destinastion Added Successfully !!!", "Success ", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
