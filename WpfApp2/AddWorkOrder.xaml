@@ -65,114 +65,64 @@
                 <Button Grid.Row="2" Grid.Column="2" Margin="105,66,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Get Routes" ToolTip="Get Routes" Cursor="Hand" Width="100" Height="35"/>
 
                 <!--Row 3-->
-                <TextBlock Grid.Row="3" Margin="15 10 0 0" VerticalAlignment="Top" Text="Recommendation" Foreground="#374655" FontSize="18"/>
-                <Border Grid.Row="3" Grid.ColumnSpan="2">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                        </Grid.RowDefinitions>
-                        
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        
-                        <!--Card One-->
-                        <Border Grid.Row="0" Grid.Column="0"  Margin="18 45 20 0" Background="Transparent" Height="auto" CornerRadius="5" HorizontalAlignment="Stretch" BorderBrush="#1d4540" BorderThickness="1">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="3" Margin="15 10 10 0" VerticalAlignment="Top" Text="Recommendation" Foreground="#374655" FontSize="18"/>
+                <ListBox  x:Name="lstCards" Margin="15 40 28 0" Grid.Row="3" Grid.ColumnSpan="3" Background="Transparent" BorderThickness="0">
+                    <ListBox.Resources>
+                        <!-- Style for the ListBoxItem -->
+                        <Style TargetType="ListBoxItem">
+                            <Style.Triggers>
+                                <!-- Trigger for when the ListBoxItem is selected -->
+                                <Trigger Property="IsSelected" Value="True">
+                                    <!-- Set the margin for selected items -->
+                                    <Setter Property="Margin" Value="5"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListBox.Resources>
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" Margin="10"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Margin="5">
+                                <StackPanel Orientation="Horizontal">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
 
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Border Grid.Row="0" Grid.ColumnSpan="2" CornerRadius="15" Height="Auto">
-                                    <Image Source="pack://application:,,,/WpfApp2;component/Images/logistics.jpg"/>
-                                </Border>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Border Grid.Row="0" Grid.ColumnSpan="2" CornerRadius="15" Height="Auto">
+                                            <Image Source="pack://application:,,,/WpfApp2;component/Images/logistics.jpg"/>
+                                        </Border>
+                                        <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" FontSize="14" Content="Route : " Foreground="#1d4540"/>
+                                        <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" FontSize="16" Text="{Binding Summary}" Margin="5"/>
 
-                                <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" FontSize="14" Content="Route" Foreground="#1d4540"/>
-                                <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" FontSize="16" Content="NH44" Foreground="#1d4540"/>
+                                        <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" FontSize="14" Content="Vehicle : " Foreground="#1d4540"/>
+                                        <TextBlock Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" FontSize="16" Text="{Binding Vehicle}" Margin="5"/>
 
-                                <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" FontSize="14" Content="Vehicle" Foreground="#1d4540"/>
-                                <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" FontSize="16" Content="RJ07UA5258" Foreground="#1d4540"/>
+                                        <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" FontSize="14"  Content="Driver : " Foreground="#1d4540"/>
+                                        <TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" FontSize="16"   Text="{Binding Driver}" Margin="5"/>
 
-                                <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" FontSize="14"  Content="Driver" Foreground="#1d4540"/>
-                                <Label Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" FontSize="16"  Content="Pawan Kumar" Foreground="#1d4540"/>
-                                
-                            </Grid>
-                        </Border>
+                                        <Label Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" FontSize="14"  Content="Distance : " Foreground="#1d4540"/>
+                                        <TextBlock Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" FontSize="16"   Text="{Binding Distance}" Margin="5"/>
 
-                        <!--Card Two-->
-                        <Border Grid.Row="0" Grid.Column="1" Margin="18 45 20 0" Background="Transparent" Height="auto" CornerRadius="5" HorizontalAlignment="Stretch" BorderBrush="#1d4540" BorderThickness="1">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Border Grid.Row="0" Grid.ColumnSpan="2" CornerRadius="15" Height="Auto">
-                                    <Image Source="pack://application:,,,/WpfApp2;component/Images/logistics.jpg"/>
-                                </Border>
-
-                                <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" FontSize="14" Content="Route" Foreground="#1d4540"/>
-                                <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" FontSize="16" Content="NH44" Foreground="#1d4540"/>
-
-                                <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" FontSize="14" Content="Vehicle" Foreground="#1d4540"/>
-                                <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" FontSize="16" Content="RJ07UA5258" Foreground="#1d4540"/>
-
-                                <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" FontSize="14"  Content="Driver" Foreground="#1d4540"/>
-                                <Label Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" FontSize="16"  Content="Pawan Kumar" Foreground="#1d4540"/>
-                            </Grid>
-                        </Border>
-
-                        <!--Card Two-->
-                        <Border Grid.Row="0" Grid.Column="2" Margin="18 45 20 0" Background="Transparent" Height="auto" CornerRadius="5" HorizontalAlignment="Stretch" BorderBrush="#1d4540" BorderThickness="1">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Border Grid.Row="0" Grid.ColumnSpan="2" CornerRadius="15" Height="Auto">
-                                    <Image Source="pack://application:,,,/WpfApp2;component/Images/logistics.jpg"/>
-                                </Border>
-
-                                <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" FontSize="14" Content="Route" Foreground="#1d4540"/>
-                                <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" FontSize="16" Content="NH44" Foreground="#1d4540"/>
-
-                                <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" FontSize="14" Content="Vehicle" Foreground="#1d4540"/>
-                                <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" FontSize="16" Content="RJ07UA5258" Foreground="#1d4540"/>
-
-                                <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" FontSize="14"  Content="Driver" Foreground="#1d4540"/>
-                                <Label Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" FontSize="16"  Content="Pawan Kumar" Foreground="#1d4540"/>
-                            </Grid>
-                        </Border>
-                        
-                        
-                        
-                    </Grid>
-                </Border>
+                                    </Grid>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <Button Grid.Row="4" Grid.Column="0" Height="35" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25 0 0 0" Content="Save Work Order"/>
             </Grid>
         </Border>
 

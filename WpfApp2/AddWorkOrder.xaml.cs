@@ -28,6 +28,7 @@ namespace WpfApp2
         private readonly TimeZoneInfo INDIAN_ZONE = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
         ObservableCollection<DestinationDetails> members = new ObservableCollection<DestinationDetails>();
         ObservableCollection<RoutesDetails> routes = new ObservableCollection<RoutesDetails>();
+        ObservableCollection<Recomman> recomm = new ObservableCollection<Recomman>();
         ObservableCollection<VehicleDetails> vehicles = new ObservableCollection<VehicleDetails>();
 
         public AddWorkOrder()
@@ -35,6 +36,12 @@ namespace WpfApp2
             InitializeComponent();
             //LoadData();
             loadDestinations();
+
+            recomm.Add(new Recomman { RouteID = "1", Vehicle = "RJ07UA5258", Driver = "Pawan", Summary = "NH 44", Distance = "200 KM" });
+            recomm.Add(new Recomman { RouteID = "1", Vehicle = "RJ07UA5258", Driver = "Pawan", Summary = "NH 44", Distance = "220 KM" });
+            recomm.Add(new Recomman { RouteID = "1", Vehicle = "RJ07UA5258", Driver = "Pawan", Summary = "NH 44", Distance = "240 KM" });
+
+            lstCards.ItemsSource = recomm;
 
             // Disable dates prior to today
             WorkOrderDatePicker.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1)));
@@ -87,7 +94,7 @@ namespace WpfApp2
             //dummytruckdataGrid.ItemsSource = truckdataTable.DefaultView;
         //}
         private async void loadDestinations()
-        {
+        {   
             
             using (HttpClient client = new HttpClient())
             {
@@ -178,6 +185,18 @@ namespace WpfApp2
             }
 
 
+        }
+
+        private void OpenModify(object sender, RoutedEventArgs e)
+        {
+            AddRoute myDialog = new AddRoute();
+            myDialog.Closed += MyDialog_Closed;
+            myDialog.Show();
+        }
+        private void MyDialog_Closed(object sender, EventArgs e)
+        {
+            // The dialog is closed
+            MessageBox.Show("Dialog is closed.");
         }
     }
 }
