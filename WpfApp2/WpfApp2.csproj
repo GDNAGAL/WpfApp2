@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <None Remove="Images\chart_dashboard.png" />
+    <None Remove="Images\logistics.jpg" />
     <None Remove="Images\pending_wo.png" />
     <None Remove="Images\pending_wo1.png" />
     <None Remove="Images\pic_dashboard.png" />
@@ -32,6 +33,7 @@
 
   <ItemGroup>
     <Resource Include="Images\chart_dashboard.png" />
+    <Resource Include="Images\logistics.jpg" />
     <Resource Include="Images\pending_wo.png" />
     <Resource Include="Images\pending_wo1.png" />
     <Resource Include="Images\pic_dashboard.png" />

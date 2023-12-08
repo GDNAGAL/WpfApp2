@@ -50,7 +50,7 @@
                 <ComboBox Grid.Row="1" Grid.Column="2" Margin="25,36,25,0" VerticalAlignment="Top" Text="" Height="35" x:Name="Unit" />
 
                 <!--Row 2-->
-                <TextBlock Grid.Row="2" Margin="15 10 0 0" VerticalAlignment="Top" Text="Package Details" Foreground="#374655" FontSize="18"/>
+                <TextBlock Grid.Row="2" Margin="15 10 0 0" VerticalAlignment="Top" Text="Location Details" Foreground="#374655" FontSize="18"/>
                 <Label Grid.Row="2" Grid.Column="0" Margin="15,39,0,0" VerticalAlignment="Top"  HorizontalAlignment="Left" Content="Pick-Up Point" Foreground="#97A5B4" Height="26" Width="82"/>
                 <ComboBox Grid.Row="2" Grid.Column="0" Margin="20,67,20,0" VerticalAlignment="Top" Text="" Height="35" Name="PickupPoint" SelectionChanged="PickupPoint_SelectionChanged"/>
                 <Label Grid.Row="2" Grid.Column="1" Margin="20,39,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Drop Point" Foreground="#97A5B4"  Height="26" Width="67"/>
@@ -62,22 +62,117 @@
                 <Button  Grid.Row="2" Grid.Column="2" Margin="65,66,0,0"  VerticalAlignment="Top" HorizontalAlignment="Left"  Background="Transparent" Cursor="Hand" ToolTip="Add New Pikup or Drop Point" Width="35" Click="AddDestination_Button_Click">
                     <Image Source="pack://application:,,,/WpfApp2;component/Images/plus.png"/>
                 </Button>
-                <Button Grid.Row="2" Grid.Column="2" Margin="105,66,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Get Routes" ToolTip="Get Routes" Cursor="Hand" Width="100" Height="35" Click="Get_Routes" />
+                <Button Grid.Row="2" Grid.Column="2" Margin="105,66,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Get Routes" ToolTip="Get Routes" Cursor="Hand" Width="100" Height="35"/>
 
                 <!--Row 3-->
-                <StackPanel Grid.Row="3" Margin="15 15 0 0" Grid.ColumnSpan="2" Name="availableroutestack" Visibility="Hidden">
-                    <TextBlock VerticalAlignment="Top" Text="Available Routes" Foreground="#374655" FontSize="18"/>
-                    <DataGrid Margin="5 10 25 0" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="dummydataGrid" Style="{DynamicResource DataGridStyle1}" IsReadOnly="True" Cursor="Hand" AutoGenerateColumns="True" />
-                    <Button Name="GetVehicleDetails" Visibility="Hidden"  Grid.Row="3" Margin="0,0,-175,0" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Show Available Vehicle" ToolTip="Show Available Vehicle" Cursor="Hand" Width="150" Height="35" Click="Get_Vehicle"/>
-                </StackPanel>
+                <TextBlock Grid.Row="3" Margin="15 10 0 0" VerticalAlignment="Top" Text="Recommendation" Foreground="#374655" FontSize="18"/>
+                <Border Grid.Row="3" Grid.ColumnSpan="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <!--Card One-->
+                        <Border Grid.Row="0" Grid.Column="0"  Margin="18 45 20 0" Background="Transparent" Height="auto" CornerRadius="5" HorizontalAlignment="Stretch" BorderBrush="#1d4540" BorderThickness="1">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
 
-                <!--Row 4-->
-                <StackPanel Grid.Row="4" Margin="15 15 0 0" Grid.ColumnSpan="2" Visibility="Hidden" Name="availablevehicle">
-                    <TextBlock  VerticalAlignment="Top" Text="Select Vehicle" Foreground="#374655" FontSize="18"/>
-                    <DataGrid Height="200" Margin="5 10 25 0" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="dummytruckdataGrid" Style="{DynamicResource DataGridStyle1}" IsReadOnly="True" Cursor="Hand" AutoGenerateColumns="True" />
-                    <Button  Grid.Row="4" Margin="0,0,-10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Create Order" ToolTip="Create Order" Cursor="Hand" Width="150" Height="35"/>
-                </StackPanel>
-          
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.Row="0" Grid.ColumnSpan="2" CornerRadius="15" Height="Auto">
+                                    <Image Source="pack://application:,,,/WpfApp2;component/Images/logistics.jpg"/>
+                                </Border>
+
+                                <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" FontSize="14" Content="Route" Foreground="#1d4540"/>
+                                <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" FontSize="16" Content="NH44" Foreground="#1d4540"/>
+
+                                <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" FontSize="14" Content="Vehicle" Foreground="#1d4540"/>
+                                <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" FontSize="16" Content="RJ07UA5258" Foreground="#1d4540"/>
+
+                                <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" FontSize="14"  Content="Driver" Foreground="#1d4540"/>
+                                <Label Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" FontSize="16"  Content="Pawan Kumar" Foreground="#1d4540"/>
+                                
+                            </Grid>
+                        </Border>
+
+                        <!--Card Two-->
+                        <Border Grid.Row="0" Grid.Column="1" Margin="18 45 20 0" Background="Transparent" Height="auto" CornerRadius="5" HorizontalAlignment="Stretch" BorderBrush="#1d4540" BorderThickness="1">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.Row="0" Grid.ColumnSpan="2" CornerRadius="15" Height="Auto">
+                                    <Image Source="pack://application:,,,/WpfApp2;component/Images/logistics.jpg"/>
+                                </Border>
+
+                                <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" FontSize="14" Content="Route" Foreground="#1d4540"/>
+                                <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" FontSize="16" Content="NH44" Foreground="#1d4540"/>
+
+                                <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" FontSize="14" Content="Vehicle" Foreground="#1d4540"/>
+                                <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" FontSize="16" Content="RJ07UA5258" Foreground="#1d4540"/>
+
+                                <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" FontSize="14"  Content="Driver" Foreground="#1d4540"/>
+                                <Label Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" FontSize="16"  Content="Pawan Kumar" Foreground="#1d4540"/>
+                            </Grid>
+                        </Border>
+
+                        <!--Card Two-->
+                        <Border Grid.Row="0" Grid.Column="2" Margin="18 45 20 0" Background="Transparent" Height="auto" CornerRadius="5" HorizontalAlignment="Stretch" BorderBrush="#1d4540" BorderThickness="1">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.Row="0" Grid.ColumnSpan="2" CornerRadius="15" Height="Auto">
+                                    <Image Source="pack://application:,,,/WpfApp2;component/Images/logistics.jpg"/>
+                                </Border>
+
+                                <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" FontSize="14" Content="Route" Foreground="#1d4540"/>
+                                <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" FontSize="16" Content="NH44" Foreground="#1d4540"/>
+
+                                <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" FontSize="14" Content="Vehicle" Foreground="#1d4540"/>
+                                <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" FontSize="16" Content="RJ07UA5258" Foreground="#1d4540"/>
+
+                                <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" FontSize="14"  Content="Driver" Foreground="#1d4540"/>
+                                <Label Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" FontSize="16"  Content="Pawan Kumar" Foreground="#1d4540"/>
+                            </Grid>
+                        </Border>
+                        
+                        
+                        
+                    </Grid>
+                </Border>
             </Grid>
         </Border>
 
