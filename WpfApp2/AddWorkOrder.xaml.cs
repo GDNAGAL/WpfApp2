@@ -43,7 +43,7 @@ namespace WpfApp2
             //recomm.Add(new Recommandation { RouteID = "1", Vehicle = "RJ07UA5258", Driver = "Pawan", Summary = "NH 44", Distance = "220 KM" });
             //recomm.Add(new Recommandation { RouteID = "1", Vehicle = "RJ07UA5258", Driver = "Pawan", Summary = "NH 44", Distance = "240 KM" });
 
-            
+
 
             // Disable dates prior to today
             WorkOrderDatePicker.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1)));
@@ -54,11 +54,11 @@ namespace WpfApp2
         }
 
         private async void loadDestinations()
-        {   
-            
+        {
+
             using (HttpClient client = new HttpClient())
             {
-                var respons=new HttpResponseMessage();
+                var respons = new HttpResponseMessage();
                 try
                 {
                     respons = await client.GetAsync("https://localhost:7082/api/DestinationManage/GetAllDestinationDetails");
@@ -66,7 +66,7 @@ namespace WpfApp2
                     if (respons.IsSuccessStatusCode)
                     {
                         var jsonString = await respons.Content.ReadAsStringAsync();
-                        members = JsonConvert.DeserializeObject<ObservableCollection<DestinationDetails>>(jsonString);                        
+                        members = JsonConvert.DeserializeObject<ObservableCollection<DestinationDetails>>(jsonString);
                         PickupPoint.Items.Clear();
                         DropPoint.Items.Clear();
                         foreach (var item in members)
@@ -83,10 +83,10 @@ namespace WpfApp2
 
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-                    MessageBox.Show($"{ex.Message}","Error",MessageBoxButton.OK,MessageBoxImage.Error);
-                }                    
+                    MessageBox.Show($"{ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
         private void AddDestination_Button_Click(object sender, RoutedEventArgs e)
@@ -105,29 +105,29 @@ namespace WpfApp2
         }
         private void PickupPoint_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-     
-            if (((ComboBoxItem)DropPoint.SelectedItem)!=null && ((ComboBoxItem)PickupPoint.SelectedItem) != null && ((ComboBoxItem)PickupPoint.SelectedItem).Tag.ToString() == ((ComboBoxItem)DropPoint.SelectedItem).Tag.ToString())
+
+            if (((ComboBoxItem)DropPoint.SelectedItem) != null && ((ComboBoxItem)PickupPoint.SelectedItem) != null && ((ComboBoxItem)PickupPoint.SelectedItem).Tag.ToString() == ((ComboBoxItem)DropPoint.SelectedItem).Tag.ToString())
             {
-                MessageBox.Show("Can Not Set Both Point Same.","Warning",MessageBoxButton.OK,MessageBoxImage.Warning);
+                MessageBox.Show("Can Not Set Both Point Same.", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
                 PickupPoint.SelectedItem = null;
             }
-             
+
         }
 
         private void DropPoint_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (((ComboBoxItem)PickupPoint.SelectedItem)!=null && ((ComboBoxItem)DropPoint.SelectedItem) != null && ((ComboBoxItem)PickupPoint.SelectedItem).Tag.ToString() == ((ComboBoxItem)DropPoint.SelectedItem).Tag.ToString())
+            if (((ComboBoxItem)PickupPoint.SelectedItem) != null && ((ComboBoxItem)DropPoint.SelectedItem) != null && ((ComboBoxItem)PickupPoint.SelectedItem).Tag.ToString() == ((ComboBoxItem)DropPoint.SelectedItem).Tag.ToString())
             {
                 MessageBox.Show("Can Not Set Both Point Same.", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
-                DropPoint.SelectedItem=null;
+                DropPoint.SelectedItem = null;
             }
         }
 
         private void Get_Route_Button_Click(object sender, RoutedEventArgs e)
         {
-            if(((ComboBoxItem)PickupPoint.SelectedItem) != null && ((ComboBoxItem)DropPoint.SelectedItem) != null)
+            if (((ComboBoxItem)PickupPoint.SelectedItem) != null && ((ComboBoxItem)DropPoint.SelectedItem) != null)
             {
-                
+
             }
             else
             {
@@ -135,16 +135,16 @@ namespace WpfApp2
             }
         }
 
-       
+
         private void CreateOrder(object sender, RoutedEventArgs e)
         {
             WorkOrder workOrder = new WorkOrder();
-            workOrder.Date= TimeZoneInfo.ConvertTimeFromUtc(Convert.ToDateTime(WorkOrderDatePicker.Text), INDIAN_ZONE);
+            workOrder.Date = TimeZoneInfo.ConvertTimeFromUtc(Convert.ToDateTime(WorkOrderDatePicker.Text), INDIAN_ZONE);
             workOrder.Package = Package.TextValue;
             workOrder.Quantity = Convert.ToInt32(Quantity.TextValue);
             if (((ComboBoxItem)Unit.SelectedItem) != null)
             {
-                workOrder.Unit= ((ComboBoxItem)Unit.SelectedItem).Content.ToString();
+                workOrder.Unit = ((ComboBoxItem)Unit.SelectedItem).Content.ToString();
             }
 
 
@@ -154,10 +154,10 @@ namespace WpfApp2
         {
             var workorderdate = WorkOrderDatePicker.Text;
             var packageQty = Quantity.TextValue;
-          
-            if (((ComboBoxItem)PackageType.SelectedItem) != null && workorderdate !="" && packageQty !="" && ((ComboBoxItem)PickupPoint.SelectedItem) != null && ((ComboBoxItem)DropPoint.SelectedItem) != null && Package.TextValue!=null && Package.TextValue!="")
+
+            if (((ComboBoxItem)PackageType.SelectedItem) != null && workorderdate != "" && packageQty != "" && ((ComboBoxItem)PickupPoint.SelectedItem) != null && ((ComboBoxItem)DropPoint.SelectedItem) != null)
             {
-                Package obj=new Package();
+                Package obj = new Package();
 
                 var packageType = ((ComboBoxItem)PackageType.SelectedItem).Content.ToString();
                 var pickuppoint = ((ComboBoxItem)PickupPoint.SelectedItem).Content.ToString();
@@ -189,7 +189,7 @@ namespace WpfApp2
             }
             else
             {
-                MessageBox.Show("Please Select All Required Field","Warning",MessageBoxButton.OK,MessageBoxImage.Warning);
+                MessageBox.Show("Please Select All Required Field", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
@@ -227,5 +227,45 @@ namespace WpfApp2
                 MessageBox.Show($"{ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        private void ViewDriver(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = sender as Button;
+
+            // Find the ListBoxItem that contains the clicked button
+            ListBoxItem clickedListBoxItem = FindVisualParent<ListBoxItem>(clickedButton);
+
+            // Check if the ListBoxItem is not null
+            if (clickedListBoxItem != null)
+            {
+                // Get the data context of the ListBoxItem
+                Recommandation itemData = clickedListBoxItem.DataContext as Recommandation;
+
+                // Check if the data context is not null
+                if (itemData != null)
+                {
+                    // Access the DriverName property
+                    string driverName = itemData.DriverName;
+
+                    // Now you can use the 'driverName' as needed
+                    MessageBox.Show($"DriverName: {driverName}");
+                }
+            }
+        }
+
+        private T FindVisualParent<T>(DependencyObject obj) where T : DependencyObject
+        {
+            while (obj != null)
+            {
+                if (obj is T parent)
+                {
+                    return parent;
+                }
+                obj = VisualTreeHelper.GetParent(obj);
+            }
+            return null;
+        }
+
+
     }
 }
