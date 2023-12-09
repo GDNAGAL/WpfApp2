@@ -162,13 +162,13 @@
                                             <Image Source="pack://application:,,,/WpfApp2;component/Images/logistics.jpg"/>
                                         </Border>
                                         <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" FontSize="14" Content="Route : " Foreground="#1d4540"/>
-                                        <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" FontSize="16" Text="{Binding Summary}" Margin="5"/>
+                                        <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" FontSize="16" Text="{Binding RouteName}" Margin="5"/>
 
                                         <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" FontSize="14" Content="Vehicle : " Foreground="#1d4540"/>
-                                        <TextBlock Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" FontSize="16" Text="{Binding Vehicle}" Margin="5"/>
+                                        <TextBlock Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" FontSize="16" Text="{Binding VehicleRegNo}" Margin="5"/>
 
                                         <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" FontSize="14"  Content="Driver : " Foreground="#1d4540"/>
-                                        <TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" FontSize="16"   Text="{Binding Driver}" Margin="5"/>
+                                        <TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" FontSize="16"   Text="{Binding DriverName}" Margin="5"/>
 
                                         <Label Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" FontSize="14"  Content="Distance : " Foreground="#1d4540"/>
                                         <TextBlock Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" FontSize="16"   Text="{Binding Distance}" Margin="5"/>

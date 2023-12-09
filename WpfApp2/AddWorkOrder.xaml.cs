@@ -16,6 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfApp2.Model;
+using System.Text.Json;
+
 using WpfApp2.UserControls;
 
 namespace WpfApp2
@@ -28,7 +30,7 @@ namespace WpfApp2
         private readonly TimeZoneInfo INDIAN_ZONE = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
         ObservableCollection<DestinationDetails> members = new ObservableCollection<DestinationDetails>();
         ObservableCollection<RoutesDetails> routes = new ObservableCollection<RoutesDetails>();
-        ObservableCollection<Recomman> recomm = new ObservableCollection<Recomman>();
+        ObservableCollection<Recommandation> recomm = new ObservableCollection<Recommandation>();
         ObservableCollection<VehicleDetails> vehicles = new ObservableCollection<VehicleDetails>();
 
         public AddWorkOrder()
@@ -36,11 +38,11 @@ namespace WpfApp2
             InitializeComponent();
             loadDestinations();
 
-            recomm.Add(new Recomman { RouteID = "1", Vehicle = "RJ07UA5258", Driver = "Pawan", Summary = "NH 44", Distance = "200 KM" });
-            recomm.Add(new Recomman { RouteID = "1", Vehicle = "RJ07UA5258", Driver = "Pawan", Summary = "NH 44", Distance = "220 KM" });
-            recomm.Add(new Recomman { RouteID = "1", Vehicle = "RJ07UA5258", Driver = "Pawan", Summary = "NH 44", Distance = "240 KM" });
+            //recomm.Add(new Recommandation { RouteID = "1", Vehicle = "RJ07UA5258", Driver = "Pawan", Summary = "NH 44", Distance = "200 KM" });
+            //recomm.Add(new Recommandation { RouteID = "1", Vehicle = "RJ07UA5258", Driver = "Pawan", Summary = "NH 44", Distance = "220 KM" });
+            //recomm.Add(new Recommandation { RouteID = "1", Vehicle = "RJ07UA5258", Driver = "Pawan", Summary = "NH 44", Distance = "240 KM" });
 
-            lstCards.ItemsSource = recomm;
+            
 
             // Disable dates prior to today
             WorkOrderDatePicker.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1)));
@@ -154,18 +156,27 @@ namespace WpfApp2
           
             if (((ComboBoxItem)PackageType.SelectedItem) != null && workorderdate !="" && packageQty !="" && ((ComboBoxItem)PickupPoint.SelectedItem) != null && ((ComboBoxItem)DropPoint.SelectedItem) != null)
             {
+                Package obj=new Package();
+
                 var packageType = ((ComboBoxItem)PackageType.SelectedItem).Content.ToString();
                 var pickuppoint = ((ComboBoxItem)PickupPoint.SelectedItem).Content.ToString();
                 var dropPoint = ((ComboBoxItem)DropPoint.SelectedItem).Content.ToString();
                 //call api
+                obj.packageType = packageType;
+                obj.PackageDate = Convert.ToDateTime(workorderdate);
+                obj.unit = "KG";
+                obj.packages = "Scnjd";
+                var data = System.Text.Json.JsonSerializer.Serialize(obj);
                 var client = new HttpClient();
                 var request = new HttpRequestMessage(HttpMethod.Post, "https://localhost:7082/api/GetRecommendation/GetRecommendations?origin=bikaner&destination=jaipur");
-                var content = new StringContent("{\r\n  \"packageId\": 0,\r\n  \"packageType\": \"SOLID\",\r\n  \"packages\": \"string\",\r\n  \"quantity\": 1000,\r\n  \"unit\": \"KG\"\r\n}", null, "application/json");
+                var content = new StringContent(data, null, "application/json");
                 request.Content = content;
                 var response = await client.SendAsync(request);
                 response.EnsureSuccessStatusCode();
-                Console.WriteLine(await response.Content.ReadAsStringAsync());
-
+                var result=await response.Content.ReadAsStringAsync();
+                //ObservableCollection<WpfApp2.Model.Recommandation> re = new ObservableCollection<Recommandation>();
+                recomm= JsonConvert.DeserializeObject<ObservableCollection<Recommandation>>(result);
+                lstCards.ItemsSource = recomm;
             }
             else
             {
