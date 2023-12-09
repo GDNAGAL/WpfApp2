@@ -19,6 +19,7 @@ using WpfApp2.Model;
 using System.Text.Json;
 
 using WpfApp2.UserControls;
+using System.Reflection.Metadata;
 
 namespace WpfApp2
 {
@@ -154,7 +155,7 @@ namespace WpfApp2
             var workorderdate = WorkOrderDatePicker.Text;
             var packageQty = Quantity.TextValue;
           
-            if (((ComboBoxItem)PackageType.SelectedItem) != null && workorderdate !="" && packageQty !="" && ((ComboBoxItem)PickupPoint.SelectedItem) != null && ((ComboBoxItem)DropPoint.SelectedItem) != null)
+            if (((ComboBoxItem)PackageType.SelectedItem) != null && workorderdate !="" && packageQty !="" && ((ComboBoxItem)PickupPoint.SelectedItem) != null && ((ComboBoxItem)DropPoint.SelectedItem) != null && Package.TextValue!=null && Package.TextValue!="")
             {
                 Package obj=new Package();
 
@@ -168,15 +169,23 @@ namespace WpfApp2
                 obj.packages = "Scnjd";
                 var data = System.Text.Json.JsonSerializer.Serialize(obj);
                 var client = new HttpClient();
-                var request = new HttpRequestMessage(HttpMethod.Post, "https://localhost:7082/api/GetRecommendation/GetRecommendations?origin="+pickuppoint+"&destination="+dropPoint);
-                var content = new StringContent(data, null, "application/json");
-                request.Content = content;
-                var response = await client.SendAsync(request);
-                response.EnsureSuccessStatusCode();
-                var result=await response.Content.ReadAsStringAsync();
-                //ObservableCollection<WpfApp2.Model.Recommandation> re = new ObservableCollection<Recommandation>();
-                recomm= JsonConvert.DeserializeObject<ObservableCollection<Recommandation>>(result);
-                lstCards.ItemsSource = recomm;
+                try
+                {
+                    var request = new HttpRequestMessage(HttpMethod.Post, "https://localhost:7082/api/GetRecommendation/GetRecommendations?origin=" + pickuppoint + "&destination=" + dropPoint);
+                    var content = new StringContent(data, null, "application/json");
+                    request.Content = content;
+                    var response = await client.SendAsync(request);
+                    response.EnsureSuccessStatusCode();
+                    var result = await response.Content.ReadAsStringAsync();
+                    //ObservableCollection<WpfApp2.Model.Recommandation> re = new ObservableCollection<Recommandation>();
+                    recomm = JsonConvert.DeserializeObject<ObservableCollection<Recommandation>>(result);
+                    lstCards.ItemsSource = recomm;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"{ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
             }
             else
             {
@@ -184,9 +193,39 @@ namespace WpfApp2
             }
         }
 
-        private void Save_WorkOrder(object sender, RoutedEventArgs e)
+        private async void Save_WorkOrder(object sender, RoutedEventArgs e)
         {
-            Recommandation recommandation = new Recommandation();
+            Recommandation rec = lstCards.SelectedItem as Recommandation;
+            WorkOrder order=new();
+            if (rec!=null)
+            {
+                 order = new() {
+                    PackageId = rec.packageID,
+                    RouteId = rec.RouteID,
+                    Package = Package.TextValue,
+                    TypeOfPackage = ((ComboBoxItem)PackageType.SelectedItem).Content.ToString(),
+                    Quantity = Convert.ToInt32(Quantity.TextValue),
+                    Unit = ((ComboBoxItem)Unit.SelectedItem).Content.ToString(),
+                    Date = Convert.ToDateTime(WorkOrderDatePicker.Text)
+                };
+            }
+            var data = System.Text.Json.JsonSerializer.Serialize(order);
+            HttpClient client = new HttpClient();
+            try
+            {
+                var request = new HttpRequestMessage(HttpMethod.Post, "https://localhost:7082/api/WorkOrder/AddNewWorkOrder\r\n");
+                var content = new StringContent(data, null, "application/json");
+                request.Content = content;
+                var response = await client.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+                var result = await response.Content.ReadAsStringAsync();
+                this.Close();
+                MessageBox.Show(result);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
