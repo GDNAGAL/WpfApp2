@@ -147,6 +147,30 @@ namespace WpfApp2
 
         }
 
-        
+        private async void Recommendations_Button_Click(object sender, RoutedEventArgs e)
+        {
+            var workorderdate = WorkOrderDatePicker.Text;
+            var packageQty = Quantity.TextValue;
+          
+            if (((ComboBoxItem)PackageType.SelectedItem) != null && workorderdate !="" && packageQty !="" && ((ComboBoxItem)PickupPoint.SelectedItem) != null && ((ComboBoxItem)DropPoint.SelectedItem) != null)
+            {
+                var packageType = ((ComboBoxItem)PackageType.SelectedItem).Content.ToString();
+                var pickuppoint = ((ComboBoxItem)PickupPoint.SelectedItem).Content.ToString();
+                var dropPoint = ((ComboBoxItem)DropPoint.SelectedItem).Content.ToString();
+                //call api
+                var client = new HttpClient();
+                var request = new HttpRequestMessage(HttpMethod.Post, "https://localhost:7082/api/GetRecommendation/GetRecommendations?origin=bikaner&destination=jaipur");
+                var content = new StringContent("{\r\n  \"packageId\": 0,\r\n  \"packageType\": \"SOLID\",\r\n  \"packages\": \"string\",\r\n  \"quantity\": 1000,\r\n  \"unit\": \"KG\"\r\n}", null, "application/json");
+                request.Content = content;
+                var response = await client.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+                Console.WriteLine(await response.Content.ReadAsStringAsync());
+
+            }
+            else
+            {
+                MessageBox.Show("Please Select All Required Field","Warning",MessageBoxButton.OK,MessageBoxImage.Warning);
+            }
+        }
     }
 }
