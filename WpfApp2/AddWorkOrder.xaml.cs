@@ -168,7 +168,7 @@ namespace WpfApp2
                 obj.packages = "Scnjd";
                 var data = System.Text.Json.JsonSerializer.Serialize(obj);
                 var client = new HttpClient();
-                var request = new HttpRequestMessage(HttpMethod.Post, "https://localhost:7082/api/GetRecommendation/GetRecommendations?origin=bikaner&destination=jaipur");
+                var request = new HttpRequestMessage(HttpMethod.Post, "https://localhost:7082/api/GetRecommendation/GetRecommendations?origin="+pickuppoint+"&destination="+dropPoint);
                 var content = new StringContent(data, null, "application/json");
                 request.Content = content;
                 var response = await client.SendAsync(request);
@@ -182,6 +182,11 @@ namespace WpfApp2
             {
                 MessageBox.Show("Please Select All Required Field","Warning",MessageBoxButton.OK,MessageBoxImage.Warning);
             }
+        }
+
+        private void Save_WorkOrder(object sender, RoutedEventArgs e)
+        {
+            Recommandation recommandation = new Recommandation();
         }
     }
 }

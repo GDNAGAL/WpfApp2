@@ -162,25 +162,25 @@
                                             <Image Source="pack://application:,,,/WpfApp2;component/Images/logistics.jpg"/>
                                         </Border>
                                         <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" FontSize="14" Content="Route : " Foreground="#1d4540"/>
-                                        <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" FontSize="16" Text="{Binding RouteName}" Margin="5"/>
+                                        <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" FontSize="16" Width="150"  Height="40" Text="{Binding RouteName}" TextWrapping="Wrap" Margin="5" x:Name="RouteName"/>
 
                                         <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" FontSize="14" Content="Vehicle : " Foreground="#1d4540"/>
-                                        <TextBlock Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" FontSize="16" Text="{Binding VehicleRegNo}" Margin="5"/>
+                                        <TextBlock Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" FontSize="16" Text="{Binding VehicleRegNo}" Margin="5" x:Name="VehicleRegNo"/>
 
                                         <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" FontSize="14"  Content="Driver : " Foreground="#1d4540"/>
-                                        <TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" FontSize="16"   Text="{Binding DriverName}" Margin="5"/>
+                                        <TextBlock Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" FontSize="16"   Text="{Binding DriverName}" Margin="5" x:Name="DriverName"/>
 
                                         <Label Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" FontSize="14"  Content="Distance : " Foreground="#1d4540"/>
-                                        <TextBlock Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" FontSize="16"   Text="{Binding Distance}" Margin="5"/>
-                                        <Button Grid.Row="5" Grid.ColumnSpan="2" Height="35" Content="Modify"/>
+                                        <TextBlock Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" FontSize="16"   Text="{Binding Distance}" Margin="5" x:Name="Distance"/>
 
+                                        <Button Grid.Row="5" Grid.ColumnSpan="2" Height="35" Content="Modify" VerticalAlignment="Bottom"/>
                                     </Grid>
                                 </StackPanel>
                             </Border>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-                <Button Grid.Row="4" Grid.Column="0" Height="35" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25 0 0 0" Content="Save Work Order"/>
+                <Button Grid.Row="4" Grid.Column="0" Height="35" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25 0 0 0" Content="Save Work Order" Click="Save_WorkOrder"/>
             </Grid>
         </Border>
 
