@@ -1,4 +1,4 @@
-﻿<Window x:Class="WpfApp2.DriverProfile"
+﻿<Window x:Class="WpfApp2.VehicleProfile"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,7 +8,8 @@
         mc:Ignorable="d"
         Title="Driver Detail" Height="250" Width="400"
         ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Loaded="Page_Loaded">
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
@@ -52,17 +53,17 @@
 
                 <!--Form Percentage-->
                 <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" Margin="0,20,20,41" Grid.RowSpan="2"/>
-                <Label Grid.Row="2" Grid.Column="0" Content="Driver Name : "  HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                <Label Grid.Row="2" Grid.Column="1" Content="Pawan Kumar"  HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="16"/>
+                <Label Grid.Row="2" Grid.Column="0" Content="VehicleRegNo : "  HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <Label Grid.Row="2" Grid.Column="1"   HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="16" x:Name="DriverName"/>
 
-                <Label Grid.Row="3" Grid.Column="0" Content="Driver Name : "  HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                <Label Grid.Row="3" Grid.Column="1" Content="Pawan Kumar"  HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="16"/>
-                
-                <Label Grid.Row="4" Grid.Column="0" Content="Driver Name : "  HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                <Label Grid.Row="4" Grid.Column="1" Content="Pawan Kumar"  HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="16"/>
+                <Label Grid.Row="3" Grid.Column="0" Content="Vehicle Type : "  HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <Label Grid.Row="3" Grid.Column="1"   HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="16" x:Name="Age"/>
 
-                <Label Grid.Row="5" Grid.Column="0" Content="Driver Name : "  HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                <Label Grid.Row="5" Grid.Column="1" Content="Pawan Kumar"  HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="16"/>
+                <Label Grid.Row="4" Grid.Column="0" Content="Capacity : "  HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <Label Grid.Row="4" Grid.Column="1"   HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="16" x:Name="ExpYear"/>
+
+                <Label Grid.Row="5" Grid.Column="0" Content="Last Maintainance : "  HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <Label Grid.Row="5" Grid.Column="1"   HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="16" x:Name="LicenseClasss"/>
 
 
 

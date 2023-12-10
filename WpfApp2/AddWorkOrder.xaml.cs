@@ -246,10 +246,11 @@ namespace WpfApp2
                 {
                     // Access the DriverName property
                     string driverName = itemData.DriverName;
+                    int driverid = itemData.DriverID;
 
                     // Now you can use the 'driverName' as needed
                     //MessageBox.Show($"DriverName: {driverName}");
-                    DriverProfile driverp = new DriverProfile();
+                    DriverProfile driverp = new DriverProfile(driverid);
                     driverp.ShowDialog();
                 }
             }
@@ -278,8 +279,38 @@ namespace WpfApp2
 
                     // Now you can use the 'driverName' as needed
                     //MessageBox.Show($"DriverName: {driverName}");
-                    DriverProfile driverp = new DriverProfile();
+                    DriverProfile driverp = new DriverProfile(itemData.DriverID);
                     driverp.ShowDialog();
+                }
+            }
+        }
+
+        private void ViewVehicleProfile(object sender, RoutedEventArgs e)
+        {
+            TextBlock clickedButton = sender as TextBlock;
+
+            // Find the ListBoxItem that contains the clicked button
+            ListBoxItem clickedListBoxItem = FindVisualParent<ListBoxItem>(clickedButton);
+
+            // Check if the ListBoxItem is not null
+            if (clickedListBoxItem != null)
+            {
+                // Get the data context of the ListBoxItem
+                Recommandation itemData = clickedListBoxItem.DataContext as Recommandation;
+
+                // Check if the data context is not null
+                if (itemData != null)
+                {
+                    // Access the DriverName property
+
+
+                    // Now you can use the 'driverName' as needed
+                    //MessageBox.Show($"DriverName: {driverName}");
+
+
+
+                    VehicleProfile vehicle = new VehicleProfile(itemData.VehicleID);
+                    vehicle.ShowDialog();
                 }
             }
         }
