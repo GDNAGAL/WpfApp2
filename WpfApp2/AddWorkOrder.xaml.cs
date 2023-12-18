@@ -160,13 +160,15 @@ namespace WpfApp2
                 Package obj = new Package();
 
                 var packageType = ((ComboBoxItem)PackageType.SelectedItem).Content.ToString();
+                var unit = ((ComboBoxItem)Unit.SelectedItem).Content.ToString();
                 var pickuppoint = ((ComboBoxItem)PickupPoint.SelectedItem).Content.ToString();
                 var dropPoint = ((ComboBoxItem)DropPoint.SelectedItem).Content.ToString();
                 //call api
                 obj.packageType = packageType;
                 obj.PackageDate = Convert.ToDateTime(workorderdate);
-                obj.unit = "KG";
-                obj.packages = "Scnjd";
+                obj.unit = unit;
+                obj.packages = Package.Content.ToString()+" ";
+                obj.quantity =Convert.ToInt32(packageQty);
                 var data = System.Text.Json.JsonSerializer.Serialize(obj);
                 var client = new HttpClient();
                 try
