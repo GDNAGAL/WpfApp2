@@ -6,7 +6,7 @@
         xmlns:uc="clr-namespace:WpfApp2.UserControls"
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
-        Title="Driver Detail" Height="250" Width="400"
+        Title="Vehicle Detail" Height="250" Width="400"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Loaded="Page_Loaded">
@@ -48,7 +48,7 @@
 
                     </Border>
 
-                    <TextBlock Text="Driver Profile" Foreground="#374655" FontSize="18" Margin="15 0 0 0" VerticalAlignment="Center"/>
+                    <TextBlock Text="Vehicle Profile" Foreground="#374655" FontSize="18" Margin="15 0 0 0" VerticalAlignment="Center"/>
                 </StackPanel>
 
                 <!--Form Percentage-->
